@@ -1,4 +1,42 @@
 {
+  "actions": {
+    "filter": "Filtrar",
+    "search": "Buscar",
+    "new": "Nuevo",
+    "create": "Crear",
+    "continue": "Continuar",
+    "startCapture": "Iniciar captura",
+    "finish": "Finalizar",
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "saveChanges": "Guardar cambios",
+    "repeat": "Repetir",
+    "scheduleSession": "Agendar sesión",
+    "seeHistory": "Ver historial",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "see": "Ver",
+    "return": "Volver",
+    "accept": "Aceptar",
+    "confirmation": "¿Estás seguro que deseas {action} este {resource}?",
+    "capturingImg": "Capturando Imágenes",
+    "send": "Enviar",
+    "start": "Iniciar"
+  },
+
+  "notification": {
+    "success": "{noun} {resource} ha sido {action} con éxito",
+    "error": "Ha ocurrido un error al {action} {noun} {resource}",
+    "actions": {
+      "deleted": "eliminado",
+      "created": "creado",
+      "updated": "actualizado",
+      "saved": "Guardado",
+      "calculating": "Calculando",
+      "search": "buscar"
+    }
+  },
+
   "fields": {
     "phone": "Teléfono",
     "email": "Correo",
