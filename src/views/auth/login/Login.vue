@@ -14,8 +14,8 @@
         >
       </div>
       <div class="column login-column-right max-height">
-        <div class="columns full-height">
-          <div class="column is-elevated mr-12 is-vcentered">
+        <div class="columns full-height is-centered">
+          <div class="column is-elevated is-vcentered">
             <div class="px-16 py-20 is-login-card has-shadow">
               <div class="full-width has-text-centered is-login-title has-text-medium-blue">
                 {{$t('login.signIn')}}
@@ -50,7 +50,7 @@
               <BField class="has-text-centered pb-4">
                 <BButton
                   class="has-text-white"
-                  :disabled="!isLoginEnabled || !isOnline"
+                  :disabled="!isLoginEnabled"
                   expanded
                   :loading="loading"
                   rounded
@@ -60,7 +60,7 @@
                   {{$t('login.login')}}
                 </BButton>
               </BField>
-              <!-- <div class="field has-text-title has-text-centered is-text-p">
+              <div class="field has-text-title has-text-centered is-text-p">
                 {{$t('login.forget')}}
                 <span
                   class="has-text-blue is-underlined"
@@ -68,7 +68,7 @@
                 >
                   {{$t('login.recover')}}
                 </span>
-              </div> -->
+              </div>
             </div>
           </div>
         </div>

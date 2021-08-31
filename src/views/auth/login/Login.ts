@@ -2,7 +2,7 @@ import { User } from 'adamo-components'
 import { Component, Vue } from 'vue-property-decorator'
 import { namespace } from 'vuex-class'
 
-// import RecoverPassModal from '@/components/modals/recover-pass-modal/RecoverPassModal.vue'
+import AModalRecoverPass from 'adamo-components/src/components/modals/recover-pass-modal/AModalRecoverPass.vue'
 
 const auth = namespace('auth')
 @Component
@@ -52,10 +52,10 @@ export default class Login extends Vue {
       await this.action_login({
         email: this.email,
         password: this.password,
-        source: process.env.VUE_APP_ID_STATION
+        source: 'manager'
       })
 
-      this.$router.push({ name: 'patientsList' })
+      // this.$router.push({ name: 'patientsList' })
     }
     catch (error) {
       this.errorMessage = error.response.data.message
@@ -65,9 +65,9 @@ export default class Login extends Vue {
     }
   }
 
-  // recover (): void {
-  //   this.$modal({
-  //     component: RecoverPassModal
-  //   })
-  // }
+  recover (): void {
+    this.$modal({
+      component: AModalRecoverPass
+    })
+  }
 }
