@@ -1,4 +1,16 @@
 {
+  "spaces": {
+    "num": "Espacio|Espacios"
+  },
+
+  "data": {
+    "num": "Dato|Datos"
+  },
+
+  "patients": {
+    "num": "Paciente|Pacientes"
+  },
+
   "actions": {
     "filter": "Filtrar",
     "search": "Buscar",
