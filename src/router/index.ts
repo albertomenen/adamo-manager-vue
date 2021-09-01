@@ -4,13 +4,13 @@ import guards from './guards'
 
 // Importando rutas
 import auth from './routes/auth'
-import home from './routes/home'
+import spaces from './routes/spaces'
 
 Vue.use(VueRouter)
 
 const routes: Array<RouteConfig> = [
-  ...home,
-  ...auth
+  ...auth,
+  ...spaces
 ]
 
 const router = new VueRouter({
