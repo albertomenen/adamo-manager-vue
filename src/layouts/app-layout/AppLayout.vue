@@ -55,12 +55,8 @@
           >
         </div>
         <div>
-          <BIcon
-            class="is-round has-background-white"
-            icon="user"
-            pack="fas"
-            size="is-medium"
-            type="is-blue"
+          <AMenuUser
+            :showAgenda="false"
           />
         </div>
       </header>

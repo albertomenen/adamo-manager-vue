@@ -119,5 +119,17 @@
     "recover": "Recover",
     "signInUserOffline": "Sign in with your offline user",
     "recoverText": "Enter your registration email"
+  },
+
+  "languages": {
+    "label": "Idiom",
+    "spanish": "Spanish",
+    "english": "English"
+  },
+
+  "userMenu": {
+    "agenda": "My agenda",
+    "conf": "Configuration",
+    "logout": "Logout"
   }
 }

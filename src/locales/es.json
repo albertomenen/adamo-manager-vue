@@ -122,5 +122,17 @@
     "recover": "Recuperar",
     "signInUserOffline": "Ingresar con tu usuario offline",
     "recoverText": "Introduce tu email de registro"
+  },
+
+  "languages": {
+    "label": "Idioma",
+    "spanish": "Español",
+    "english": "Inglés"
+  },
+
+  "userMenu": {
+    "agenda": "Mi agenda",
+    "conf": "Configuración",
+    "logout": "Cerrar sesión"
   }
 }
