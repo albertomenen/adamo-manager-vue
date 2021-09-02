@@ -172,4 +172,9 @@
     }
   }
 }
+@media screen and (min-width: 769px) {
+  .menu {
+    padding-left: 3rem !important;
+  }
+}
 </style>
