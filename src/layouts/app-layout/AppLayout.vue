@@ -20,7 +20,7 @@
         <BMenu class="is-custom-mobile mt-10">
           <BMenuList>
             <BMenuItem
-              :active="true"
+              :active="routeName.includes('spaces')"
               icon="hospital"
               icon-pack="fas"
               :label="$tc('spaces.num', 2)"
@@ -29,16 +29,20 @@
               :to="{ name: 'spacesList' }"
             />
             <BMenuItem
+              :active="routeName.includes('data')"
               icon="notes-medical"
               icon-pack="fas"
               :label="$tc('data.num', 2)"
               size="is-medium"
             />
             <BMenuItem
+              :active="routeName.includes('patients')"
               icon="hospital-user"
               icon-pack="fas"
               :label="$tc('patients.num', 2)"
               size="is-medium"
+              tag="router-link"
+              :to="{ name: 'patientsList' }"
             />
           </BMenuList>
         </BMenu>
