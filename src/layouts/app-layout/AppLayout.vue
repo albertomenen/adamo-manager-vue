@@ -17,13 +17,16 @@
             src="@/assets/logo_grupo.svg"
           />
         </div>
-        <BMenu class="is-custom-mobile mt-10 pl-12">
+        <BMenu class="is-custom-mobile mt-10">
           <BMenuList>
             <BMenuItem
+              :active="true"
               icon="hospital"
               icon-pack="fas"
               :label="$tc('spaces.num', 2)"
               size="is-medium"
+              tag="router-link"
+              :to="{ name: 'spacesList' }"
             />
             <BMenuItem
               icon="notes-medical"
@@ -136,6 +139,37 @@
     color: $blue;
     height: 70px;
     border-radius: 35px 0px 0px 35px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .b-sidebar {
+    .sidebar-content {
+      &.is-mini-mobile {
+        &:not(.is-mini-expand),
+        &.is-mini-expand:not(:hover):not(.is-mini-delayed) {
+          .menu-list {
+            li {
+              a {
+                span:nth-child(2) {
+                  display: none;
+                }
+              }
+              ul {
+                padding-left: 0;
+                li {
+                  a {
+                    display: inline-block;
+                  }
+              }
+              }
+            }
+          }
+          .menu-label:not(:last-child) {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
   }
 }
 </style>
