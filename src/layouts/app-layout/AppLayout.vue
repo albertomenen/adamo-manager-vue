@@ -36,7 +36,7 @@
               size="is-medium"
             />
             <BMenuItem
-              :active="routeName.includes('patients')"
+              :active="routeName.includes('patients') || routeName.includes('patient') || routeName.includes('treatment')"
               icon="hospital-user"
               icon-pack="fas"
               :label="$tc('patients.num', 2)"

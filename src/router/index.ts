@@ -5,12 +5,16 @@ import guards from './guards'
 // Importando rutas
 import auth from './routes/auth'
 import spaces from './routes/spaces'
+import patients from './routes/patients'
+import treatments from './routes/treatments'
 
 Vue.use(VueRouter)
 
 const routes: Array<RouteConfig> = [
   ...auth,
-  ...spaces
+  ...spaces,
+  ...patients,
+  ...treatments
 ]
 
 const router = new VueRouter({

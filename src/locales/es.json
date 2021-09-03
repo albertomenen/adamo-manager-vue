@@ -8,7 +8,84 @@
   },
 
   "patients": {
-    "num": "Paciente|Pacientes"
+    "num": "Paciente|Pacientes",
+    "list": "Lista de pacientes",
+    "myPatients": "Mis pacientes",
+    "name": "Nombre del paciente",
+    "hasInjury": "El paciente presenta lesiones",
+    "injuryType": "Tipo de lesión",
+    "injuryCause": "Causa de la lesión",
+    "new": "Crear un paciente nuevo",
+    "personalInfo": "Info. Personal",
+    "contactInfo": "Info. Contacto",
+    "physicInfo": "Info. Física",
+    "injuryDescription": "Descripción breve de la lesión",
+    "age": "Años"
+  },
+
+  "treatments": {
+    "num": "Tratamiento|Tratamientos",
+    "active": "Tratamientos activos",
+    "mode": "Modo",
+    "modes": {
+      "auto": "Automático",
+      "manual": "Manual"
+    },
+    "status": {
+      "started": "Activo",
+      "new": "Nuevo",
+      "finished": "Finalizado",
+      "canceled": "Interrumpido"
+    },
+    "modal": {
+      "manualTitle": "Modo manual",
+      "holdPress": "Manten presionado el botón situado en el asa del brazo para mover el robot hasta la posición deseada.",
+      "stopPress": "Deja de presionar el botón para bloquear la posición del robot."
+    },
+    "teaching": {
+      "title": "Enseñando",
+      "info": "Realiza un {tap} en el botón del asa del brazo para fijar la coordenada del punto, después {action}",
+      "doubleTap": "toque doble",
+      "pressSave": "presiona guardar"
+    },
+    "labelBread": {
+      "autoInLine": "Configurar tratamiento - Auto",
+      "autoOffline": "Tratamiento - Auto",
+      "manualInLine": "Configurar tratamiento - Manual",
+      "manualOffline": "Tratamiento - Manual"
+    },
+    "movements": {
+      "perPoint": "Punto por Punto",
+      "arch": "En arco"
+    },
+    "lastSession": "Última sesión",
+    "startSession": "Empezar sesión",
+    "configuration": "Configuración del tratamiento",
+    "startTreatment": "Iniciar tratamiento",
+    "sessionInProgress": "Sesión en progreso",
+    "new": "Crear nuevo tratamiento",
+    "selectType": "Selecciona el tipo de tratamiento a configurar",
+    "savedConfiguration": "La configuración se ha guardado con éxito",
+    "startNow": "¿Deseas iniciar el tratamiento?",
+    "goBack": "Volver al historial",
+    "start": "Comenzar",
+    "scheduleAppt": "Agendar cita",
+    "treatmentStart": "Inicio del tratamiento",
+    "nextSession": "Próxima sesión",
+    "withoutScheduling": "Sin agendar",
+    "historical": "Historial",
+    "move": "Movimiento|Movimientos"
+  },
+
+  "sessions": {
+    "schedule": {
+      "dateInPass": "La fecha no puede estar en el pasado",
+      "hourInPast": "La hora final no puede ser igual o menor que la inicial",
+      "errorAction": "Error al {action} sesión",
+      "errorSearch": "Error al buscar sesión|Error al buscar sesiones"
+    },
+    "num": "Sesión|Sesiones",
+    "select": "Seleccione la sesión"
   },
 
   "actions": {
@@ -124,6 +201,15 @@
     "recoverText": "Introduce tu email de registro"
   },
 
+  "prepositions": {
+    "of": "de"
+  },
+
+  "nouns": {
+    "theM": "El",
+    "theF": "La"
+  },
+
   "languages": {
     "label": "Idioma",
     "spanish": "Español",
@@ -134,5 +220,29 @@
     "agenda": "Mi agenda",
     "conf": "Configuración",
     "logout": "Cerrar sesión"
-  }
+  },
+
+  "time": {
+    "minutes": "minutos"
+  },
+
+  "writeHere": "Escribe aquí",
+  "thermal": "Imágen térmica",
+  "surface": "Superficie",
+  "capturedImages": "Imágenes capturadas",
+  "observations": "Observaciones",
+  "scheduleNextSession": "Agendar próxima sesión",
+  "scheduleAvailable": "Agenda disponible",
+  "selectedDay": "Día seleccionado",
+  "selectTime": "Seleccione la hora de la cita",
+  "deviceTemp": "Temp. Dispositivo",
+  "confirmation": "Confirme la acción",
+  "confirmationDescription": "¿Está seguro que desea realizar esta acción?",
+  "myAppts": "Mis citas",
+  "occupied": "Ocupado",
+  "thermographicImage": "Imágen termográfica",
+  "hour": "Hora",
+  "session": "Sesión",
+  "date": "Fecha",
+  "noData": "No hay datos"
 }
