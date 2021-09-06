@@ -55,7 +55,7 @@ export default class Login extends Vue {
         source: 'manager'
       })
 
-      this.$router.push({ name: 'spacesList' })
+      this.$router.push({ name: 'groupsList' })
     }
     catch (error) {
       this.errorMessage = error.response.data.message

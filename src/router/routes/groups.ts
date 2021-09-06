@@ -2,7 +2,7 @@ import { RouteConfig } from 'vue-router'
 
 import AppLayout from '@/layouts/app-layout/AppLayout.vue'
 
-const spaceRoutes: Array<RouteConfig> = [
+const groupRoutes: Array<RouteConfig> = [
   {
     path: '/',
     component: AppLayout,
@@ -12,12 +12,12 @@ const spaceRoutes: Array<RouteConfig> = [
     children: [
       {
         path: '',
-        name: 'spacesList',
-        component: () => import('@/views/spaces/list/SpacesList.vue'),
+        name: 'groupsList',
+        component: () => import('@/views/groups/list/GroupsList.vue'),
         meta: {
           breadcrumb: [
             {
-              label: ['spaces.num', 2]
+              label: ['groups.num', 2]
             }
           ]
         }
@@ -26,4 +26,4 @@ const spaceRoutes: Array<RouteConfig> = [
   }
 ]
 
-export default spaceRoutes
+export default groupRoutes

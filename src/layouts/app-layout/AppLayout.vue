@@ -20,13 +20,13 @@
         <BMenu class="is-custom-mobile mt-10">
           <BMenuList>
             <BMenuItem
-              :active="routeName.includes('spaces')"
+              :active="routeName.includes('groups') || routeName.includes('group')"
               icon="hospital"
               icon-pack="fas"
-              :label="$tc('spaces.num', 2)"
+              :label="$tc('groups.num', 2)"
               size="is-medium"
               tag="router-link"
-              :to="{ name: 'spacesList' }"
+              :to="{ name: 'groupsList' }"
             />
             <BMenuItem
               :active="routeName.includes('data')"
