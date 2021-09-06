@@ -1,4 +1,10 @@
 {
+  "groups": {
+    "num": "Group|Groups",
+    "admin": "Groups manager",
+    "ubication": "Ubication"
+  },
+
   "spaces": {
     "num": "Space|Spaces"
   },
@@ -171,7 +177,7 @@
     "year": "Year",
     "hour": "HH:HH",
     "specialistName": "Specialist name",
-    "specialist": "Specialist (MP)",
+    "specialist": "Specialist",
     "role": "Rol",
     "group": "Group",
     "location": "Location",

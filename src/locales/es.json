@@ -1,4 +1,10 @@
 {
+  "groups": {
+    "num": "Grupo|Grupos",
+    "admin": "Administrador de grupos",
+    "ubication": "Ubicación"
+  },
+
   "spaces": {
     "num": "Espacio|Espacios"
   },
@@ -174,7 +180,7 @@
     "year": "Año",
     "hour": "HH:HH",
     "specialistName": "Nombre del espacialista",
-    "specialist": "Especialista (MP)",
+    "specialist": "Especialista",
     "role": "Rol",
     "group": "Grupo",
     "location": "Localización",
