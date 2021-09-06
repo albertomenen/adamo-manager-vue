@@ -37,14 +37,14 @@ export default class PatientHistory extends Vue {
    * Muestra los tratamientos paginados
    */
   get paginatedTreatments (): Treatment[] {
-    return this.treatments.slice((this.currentPage - 1) * 4, this.currentPage * 4)
+    return this.treatments.slice((this.currentPage - 1) * 7, this.currentPage * 7)
   }
 
   /**
    * Decide si mostrar la paginación
    */
   get showPagination (): boolean {
-    return this.treatments.length > 4
+    return this.treatments.length > 7
   }
 
   get canStartSession (): boolean {

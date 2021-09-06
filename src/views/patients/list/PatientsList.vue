@@ -38,6 +38,11 @@
     :total="totalPatients"
     @change="setPage"
   />
+
+  <BLoading
+    :active="loadingPage"
+    is-full-page
+  />
 </div>
 </template>
 
