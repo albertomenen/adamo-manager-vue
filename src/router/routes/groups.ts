@@ -4,7 +4,7 @@ import AppLayout from '@/layouts/app-layout/AppLayout.vue'
 
 const groupRoutes: Array<RouteConfig> = [
   {
-    path: '/',
+    path: '/groups',
     component: AppLayout,
     meta: {
       requiresAuth: true
