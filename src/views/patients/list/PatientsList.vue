@@ -17,19 +17,21 @@
       />
     </div>
   </div>
-  <div class="search-bar"></div>
-  <div class="columns">
-    <div class="column is-full">
-      <ATablePatients
-        id="table_patients"
-        :data="patients"
-        :loading="loadingPatients"
-        @patient:delete="deletePatient"
-        @patient:edit="editPatient"
-        @patient:show="showPatient"
-      />
-    </div>
-  </div>
+  <SearchBar
+    class="mb-6"
+  >
+    <template>
+      <FilterPatients />
+    </template>
+  </SearchBar>
+  <ATablePatients
+    id="table_patients"
+    :data="patients"
+    :loading="loadingPatients"
+    @patient:delete="deletePatient"
+    @patient:edit="editPatient"
+    @patient:show="showPatient"
+  />
   <APagination
     v-if="totalPages > 1"
     :current="currentPage"

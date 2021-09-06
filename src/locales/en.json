@@ -223,6 +223,10 @@
     "minutes": "minutes"
   },
 
+  "filter": {
+    "num": "Filter|Filters"
+  },
+
   "writeHere": "Write here",
   "thermal": "Thermal image",
   "surface": "Surface",

@@ -226,6 +226,10 @@
     "minutes": "minutos"
   },
 
+  "filter": {
+    "num": "Filtro|Filtros"
+  },
+
   "writeHere": "Escribe aquí",
   "thermal": "Imágen térmica",
   "surface": "Superficie",

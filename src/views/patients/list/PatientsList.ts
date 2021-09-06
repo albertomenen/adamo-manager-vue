@@ -7,7 +7,12 @@ import AModalPatientForm from 'adamo-components/src/components/modals/patient-fo
 
 const patientsStore = namespace('patients')
 
-@Component
+@Component({
+  components: {
+    SearchBar: () => import('@/components/search-bar/SearchBar.vue'),
+    FilterPatients: () => import('@/components/filters/filter-patients/FilterPatients.vue')
+  }
+})
 export default class PatientsList extends Vue {
 
   /**
