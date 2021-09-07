@@ -12,6 +12,27 @@
   >
     {{ props.row.location_name }}
   </BTableColumn>
+  <BTableColumn
+    v-slot="props"
+    field="address"
+    sortable
+  >
+    {{ props.row.address }}
+  </BTableColumn>
+  <BTableColumn
+    v-slot="props"
+    field="phone"
+    sortable
+  >
+    {{ props.row.phone }}
+  </BTableColumn>
+  <BTableColumn
+    v-slot="props"
+    field="email"
+    sortable
+  >
+    {{ props.row.email }}
+  </BTableColumn>
   <template #empty>
     <ATableEmpty />
   </template>

@@ -72,3 +72,9 @@
 </template>
 
 <script src="./TableGroups.ts" lang="ts"></script>
+
+<style lang="scss">
+.is-adamo-table tr.detail td:first-child {
+  padding-left: 10px;
+}
+</style>
