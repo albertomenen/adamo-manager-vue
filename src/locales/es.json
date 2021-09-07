@@ -2,7 +2,10 @@
   "groups": {
     "num": "Grupo|Grupos",
     "admin": "Administrador de grupos",
-    "ubication": "Ubicación"
+    "ubication": "Ubicación",
+    "new": "Crear grupo de salud",
+    "infoGroup": "Info. Grupo",
+    "infoCenter": "Info. Ubicación"
   },
 
   "spaces": {
@@ -190,7 +193,12 @@
     "serial": "Serial",
     "passwordConf": "Confirmación",
     "timer": "Cronómetro",
-    "user": "Usuario"
+    "user": "Usuario",
+    "centerName": "Nombre del centro",
+    "locationName": "Nombre de la localización",
+    "province": "Provincia",
+    "contactPerson": "Persona de contacto",
+    "upload": "Sube aquí el logo del grupo"
   },
 
   "login": {
@@ -254,5 +262,6 @@
   "hour": "Hora",
   "session": "Sesión",
   "date": "Fecha",
-  "noData": "No hay datos"
+  "noData": "No hay datos",
+  "sameOfGroup": "Rellenar campos con los mismos datos del grupo"
 }

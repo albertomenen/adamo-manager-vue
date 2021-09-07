@@ -13,6 +13,7 @@
         :label="`${$t('actions.new')} ${$tc('groups.num', 1)}`"
         rounded
         type="is-orange"
+        @click="showNewGroupModal"
       />
     </div>
   </div>

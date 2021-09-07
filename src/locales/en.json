@@ -2,7 +2,10 @@
   "groups": {
     "num": "Group|Groups",
     "admin": "Groups manager",
-    "ubication": "Ubication"
+    "ubication": "Ubication",
+    "new": "Create health group",
+    "infoGroup": "Info. Group",
+    "infoCenter": "Info. Location"
   },
 
   "spaces": {
@@ -187,7 +190,12 @@
     "serial": "Serial",
     "passwordConf": "Confirmation",
     "timer": "Timer",
-    "user": "User"
+    "user": "User",
+    "centerName": "Center name",
+    "locationName": "Location name",
+    "province": "Province",
+    "contactPerson": "Contact person",
+    "upload": "Upload the group logo here"
   },
 
   "login": {
@@ -251,5 +259,6 @@
   "hour": "Hour",
   "session": "Session",
   "date": "Date",
-  "noData": "There is no data"
+  "noData": "There is no data",
+  "sameOfGroup": "Fill fields with the same group data"
 }

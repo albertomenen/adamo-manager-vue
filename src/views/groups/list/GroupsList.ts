@@ -1,6 +1,9 @@
-import { Group } from 'adamo-components'
+import { ApiListResponse, ApiRequest, Group } from 'adamo-components'
 import { Component, Vue } from 'vue-property-decorator'
 import { namespace } from 'vuex-class'
+
+import ModalGroupForm from '@/components/modals/modal-group-form/ModalGroupForm.vue'
+import { FormsGroupLocation, GroupCreate } from '@/models/group.model'
 
 const groupsStore = namespace('groups')
 
@@ -25,7 +28,9 @@ export default class GroupsList extends Vue {
 
   loadingPage = true
 
-  @groupsStore.Action action_getGroups
+  @groupsStore.Action action_getGroups!: (params?: ApiRequest) => Promise<ApiListResponse<Group>>
+
+  @groupsStore.Action action_createGroup!: (groupData: GroupCreate) => Promise<Group>
 
   setPage (page: number): void {
     this.currentPage = page
@@ -69,5 +74,34 @@ export default class GroupsList extends Vue {
 
   deleteGroup (groupId: string): void {
     console.log('dele', groupId)
+  }
+
+  showNewGroupModal (): void {
+    this.$modal({
+      component: ModalGroupForm,
+      onOk: async (forms: FormsGroupLocation) => {
+        try {
+          this.loadingPage = false
+          const group = await this.action_createGroup(forms.formGroup)
+          console.log('crete group', group)
+
+          // this.$notify.success(this.$t('notification.success', {
+          //   noun: this.$t('nouns.theM'),
+          //   resource: this.$tc('groups.num', 1),
+          //   action: this.$t('notification.actions.created')
+          // }))
+        }
+        catch (error) {
+          this.$notify.error(this.$t('notification.error', {
+            noun: (this.$t('nouns.theM') as string).toLowerCase(),
+            action: (this.$t('actions.create') as string).toLowerCase(),
+            resource: this.$tc('groups.num', 1).toLowerCase()
+          }))
+        }
+        finally {
+          this.loadingPage = false
+        }
+      }
+    })
   }
 }
