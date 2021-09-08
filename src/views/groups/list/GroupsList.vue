@@ -35,7 +35,7 @@
   <APagination
     v-if="totalPages > 1"
     :current="currentPage"
-    :total="totalPages"
+    :total="totalGroups"
     @change="setPage"
   />
 </div>
