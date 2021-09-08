@@ -51,10 +51,12 @@
     :placeholder="$t('fields.contactPerson')"
   />
   <BUpload
+    accept="image/*"
     class="column"
     drag-drop
     expanded
     native
+    @input="handleImage"
   >
     <section class="section">
       <div class="content has-text-centered">

@@ -1,5 +1,4 @@
 export interface GroupCreate {
-  id_system: string
   group_name: string
   address: string
   city: string
@@ -8,6 +7,7 @@ export interface GroupCreate {
   contact_name: string
   email: string
   country: string
+  logo: any
 }
 
 export interface LocationCreate {

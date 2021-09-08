@@ -15,7 +15,6 @@ import { Component, Vue, Watch } from 'vue-property-decorator'
 export default class ModalGroupForm extends Vue {
 
   formGroup: GroupCreate = {
-    id_system: '4aadfad8-29c4-49ff-8404-4c708b465bc5',
     group_name: '',
     address: '',
     country: '',
@@ -23,7 +22,8 @@ export default class ModalGroupForm extends Vue {
     town: '',
     phone: '',
     contact_name: '',
-    email: ''
+    email: '',
+    logo: ''
   }
 
   formLocation: LocationCreate = {

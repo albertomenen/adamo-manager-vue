@@ -10,4 +10,14 @@ import { Component, Vue } from 'vue-property-decorator'
     }
   }
 })
-export default class FormGroupInfo extends Vue {}
+export default class FormGroupInfo extends Vue {
+
+  handleImage (e: any): void {
+    const reader = new FileReader()
+
+    reader.onload = (e) => {
+      this.$props.formData.logo = e.target?.result?.slice(22)
+    }
+    reader.readAsDataURL(e)
+  }
+}
