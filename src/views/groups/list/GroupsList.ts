@@ -1,4 +1,4 @@
-import { ApiListResponse, ApiRequest, Group } from 'adamo-components'
+import { ApiListResponse, ApiRequest, Group, Location } from 'adamo-components'
 import { Component, Vue } from 'vue-property-decorator'
 import { namespace } from 'vuex-class'
 
@@ -31,6 +31,8 @@ export default class GroupsList extends Vue {
   @groupsStore.Action action_getGroups!: (params?: ApiRequest) => Promise<ApiListResponse<Group>>
 
   @groupsStore.Action action_createGroup!: (groupData: GroupCreate) => Promise<Group>
+
+  @groupsStore.Action action_createLocation!: ({ groupId, formLocation }) => Promise<Location>
 
   setPage (page: number): void {
     this.currentPage = page
@@ -83,13 +85,23 @@ export default class GroupsList extends Vue {
         try {
           this.loadingPage = false
           const group = await this.action_createGroup(forms.formGroup)
-          console.log('crete group', group)
+          this.$notify.success(this.$t('notification.success', {
+            noun: this.$t('nouns.theM'),
+            resource: this.$tc('groups.num', 1),
+            action: this.$t('notification.actions.created')
+          }))
 
-          // this.$notify.success(this.$t('notification.success', {
-          //   noun: this.$t('nouns.theM'),
-          //   resource: this.$tc('groups.num', 1),
-          //   action: this.$t('notification.actions.created')
-          // }))
+          await this.action_createLocation({
+            groupId: group.id_group,
+            formLocation: forms.formLocation
+          })
+          this.$notify.success(this.$t('notification.success', {
+            noun: this.$t('nouns.theM'),
+            resource: this.$tc('locations.num', 1),
+            action: this.$t('notification.actions.created')
+          }))
+
+          this.getGroups()
         }
         catch (error) {
           this.$notify.error(this.$t('notification.error', {
