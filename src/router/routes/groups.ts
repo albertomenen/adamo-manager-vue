@@ -21,6 +21,24 @@ const groupRoutes: Array<RouteConfig> = [
             }
           ]
         }
+      },
+      {
+        path: ':groupId',
+        name: 'groupDetail',
+        component: () => import('@/views/groups/details/GroupDetails.vue'),
+        meta: {
+          breadcrumb: [
+            {
+              label: ['groups.num', 2],
+              link: {
+                name: 'groupsList'
+              }
+            },
+            {
+              label: ['groups.num', 1]
+            }
+          ]
+        }
       }
     ]
   }

@@ -8,8 +8,8 @@
     "infoCenter": "Info. Location"
   },
 
-  "spaces": {
-    "num": "Space|Spaces"
+  "locations": {
+    "num": "Location|Locations"
   },
 
   "data": {
@@ -260,5 +260,6 @@
   "session": "Session",
   "date": "Date",
   "noData": "There is no data",
-  "sameOfGroup": "Fill fields with the same group data"
+  "sameOfGroup": "Fill fields with the same group data",
+  "generalInfo": "General information"
 }

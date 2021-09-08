@@ -1,9 +1,10 @@
 import { ApiListResponse, ApiRequest, Group, Location } from 'adamo-components'
 import { Component, Vue } from 'vue-property-decorator'
 import { namespace } from 'vuex-class'
+import { FormsGroupLocation, GroupCreate } from '@/models/group.model'
 
 import ModalGroupForm from '@/components/modals/modal-group-form/ModalGroupForm.vue'
-import { FormsGroupLocation, GroupCreate } from '@/models/group.model'
+import AConfirmationModal from 'adamo-components/src/components/modals/confirmation-modal/AModalConfirmation.vue'
 
 const groupsStore = namespace('groups')
 
@@ -34,6 +35,11 @@ export default class GroupsList extends Vue {
 
   @groupsStore.Action action_createLocation!: ({ groupId, formLocation }) => Promise<Location>
 
+  @groupsStore.Action action_deleteGroup!: (groupId: string) => Promise<void>
+
+  @groupsStore.Mutation setGroupEditContext!: (context: boolean) => void
+
+
   setPage (page: number): void {
     this.currentPage = page
     this.getGroups()
@@ -58,7 +64,7 @@ export default class GroupsList extends Vue {
     catch (error) {
       this.$notify.error(this.$i18n.t('notification.error', {
         action: this.$i18n.t('notification.actions.search'),
-        resource: this.$i18n.tc('spaces.num', 2)
+        resource: this.$i18n.tc('groups.num', 2)
       }))
     }
     finally {
@@ -67,15 +73,51 @@ export default class GroupsList extends Vue {
   }
 
   showGroup (groupId: string): void {
-    console.log('show', groupId)
+    this.$router.push({
+      name: 'groupDetail',
+      params: {
+        groupId
+      }
+    })
   }
 
   editGroup (groupId: string): void {
-    console.log('edit', groupId)
+    this.setGroupEditContext(true)
+    this.showGroup(groupId)
   }
 
-  deleteGroup (groupId: string): void {
-    console.log('dele', groupId)
+  async deleteGroup (groupId: string): Promise<void> {
+    this.$modal({
+      component: AConfirmationModal,
+      props: {
+        description: this.$t('actions.confirmation', {
+          action: (this.$t('actions.delete') as string).toLowerCase(),
+          resource: this.$tc('groups.num', 1).toLowerCase()
+        }),
+        title: `${this.$t('actions.delete')} ${this.$tc('groups.num', 1)}`
+      },
+      onOk: async () => {
+        try {
+          this.loadingPage = true
+          await this.action_deleteGroup(groupId)
+          this.$notify.success(this.$t('notification.success', {
+            noun: this.$t('nouns.theM'),
+            resource: this.$tc('groups.num', 1),
+            action: this.$t('notification.actions.deleted')
+          }))
+          this.getGroups()
+        } catch (error) {
+          this.$notify.error(this.$t('notification.error', {
+            noun: (this.$t('nouns.theM') as string).toLowerCase(),
+            action: (this.$t('actions.delete') as string).toLowerCase(),
+            resource: this.$tc('groups.num', 1).toLowerCase()
+          }))
+        }
+        finally {
+          this.loadingPage = false
+        }
+      }
+    })
   }
 
   showNewGroupModal (): void {
@@ -96,7 +138,7 @@ export default class GroupsList extends Vue {
             formLocation: forms.formLocation
           })
           this.$notify.success(this.$t('notification.success', {
-            noun: this.$t('nouns.theM'),
+            noun: this.$t('nouns.theF'),
             resource: this.$tc('locations.num', 1),
             action: this.$t('notification.actions.created')
           }))
