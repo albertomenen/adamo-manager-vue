@@ -3,6 +3,7 @@
   <div class="columns">
     <div class="column is-full">
       <ATableTreatments
+        :admin="true"
         :data="paginatedTreatments"
         :selected.sync="selectedTreatment"
         @treatment:delete="deleteTreatment"
