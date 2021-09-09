@@ -7,7 +7,16 @@ import { Component, Vue } from 'vue-property-decorator'
     formData: {
       type: Object as () => PropType<LocationCreate>,
       default: () => ({})
+    },
+    withGroup: {
+      type: Boolean,
+      default: true
     }
   }
 })
-export default class FormLocationInfo extends Vue {}
+export default class FormLocationInfo extends Vue {
+
+  handleCreate (): void {
+    this.$emit('save', this.$props.formData)
+  }
+}

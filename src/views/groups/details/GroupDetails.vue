@@ -52,6 +52,19 @@
           @click="updateLocation"
         />
       </div>
+      <div
+        v-if="(tab === 1) && !getGroupEditContext && !getLocationEditContext"
+      >
+        <BButton
+          class="has-text-white has-shadow"
+          icon-pack="fas"
+          icon-right="plus"
+          :label="$t('locations.new')"
+          rounded
+          type="is-orange"
+          @click="handleNewLocation"
+        />
+      </div>
     </div>
 
     <BTabs

@@ -2,6 +2,9 @@ import { Group, Location } from 'adamo-components'
 import { Component, Vue } from 'vue-property-decorator'
 import { namespace } from 'vuex-class'
 
+import ModalLocationForm from '@/components/modals/modal-location-form/ModalLocationForm.vue'
+import { LocationCreate } from '@/models/group.model'
+
 const groupsStore = namespace('groups')
 
 @Component({
@@ -33,6 +36,8 @@ export default class GroupDetails extends Vue {
   @groupsStore.Action action_updateGroup!: (formGroup: Group) => Promise<Group>
 
   @groupsStore.Action action_updateLocation!: ({ groupId, formLocation }) => Promise<Location>
+
+  @groupsStore.Action action_createLocation!: ({ groupId, formLocation }) => Promise<Location>
 
   created (): void {
     this.getGroupData()
@@ -107,6 +112,37 @@ export default class GroupDetails extends Vue {
       this.loadingPage = false
       this.setLocationEditContext(false)
     }
+  }
+
+  handleNewLocation (): void {
+    this.$modal({
+      component: ModalLocationForm,
+      onOk: async (formLocation: LocationCreate) => {
+        try {
+          this.loadingPage = true
+          await this.action_createLocation({
+            groupId: this.group?.id_group,
+            formLocation
+          })
+          this.$notify.success(this.$t('notification.success', {
+            noun: this.$t('nouns.theF'),
+            resource: this.$tc('locations.num', 1),
+            action: this.$t('notification.actions.created')
+          }))
+          this.getGroupData()
+        }
+        catch (error) {
+          this.$notify.error(this.$t('notification.error', {
+            noun: (this.$t('nouns.theM') as string).toLowerCase(),
+            action: (this.$t('actions.delete') as string).toLowerCase(),
+            resource: this.$tc('locations.num', 1).toLowerCase()
+          }))
+        }
+        finally {
+          this.loadingPage = false
+        }
+      }
+    })
   }
 
   cancelGroupUpdate (): void {

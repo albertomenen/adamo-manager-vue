@@ -9,7 +9,8 @@
   },
 
   "locations": {
-    "num": "Location|Locations"
+    "num": "Location|Locations",
+    "new": "New Location"
   },
 
   "data": {
