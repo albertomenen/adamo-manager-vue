@@ -29,7 +29,8 @@
   "devices": {
     "num": "Device|Devices",
     "new": "New device",
-    "room": "Room"
+    "room": "Room",
+    "create": "Device register"
   },
 
   "patients": {
@@ -213,7 +214,10 @@
     "contactPerson": "Contact person",
     "upload": "Upload the group logo here",
     "code": "Code",
-    "username": "Nombre de usuario"
+    "username": "Nombre de usuario",
+    "deviceName": "Device name",
+    "hwVersion": "Hardware version",
+    "swVersion": "Software version"
   },
 
   "login": {

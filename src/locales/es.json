@@ -29,7 +29,8 @@
   "devices": {
     "num": "Dispositivo|Dispositivos",
     "new": "Nuevo dispositivo",
-    "room": "Sala"
+    "room": "Sala",
+    "create": "Registro de dispositivo"
   },
 
   "patients": {
@@ -216,7 +217,10 @@
     "contactPerson": "Persona de contacto",
     "upload": "Sube aquí el logo del grupo",
     "code": "Código",
-    "username": "Nombre de usuario"
+    "username": "Nombre de usuario",
+    "deviceName": "Nombre del dispositivo",
+    "hwVersion": "Versión de hardware",
+    "swVersion": "Versión de software"
   },
 
   "login": {
@@ -283,5 +287,6 @@
   "noData": "No hay datos",
   "sameOfGroup": "Rellenar campos con los mismos datos del grupo",
   "generalInfo": "Información general",
-  "myDateBase": "Mi base de datos"
+  "myDateBase": "Mi base de datos",
+  "instalationDate": "Fecha de instalación"
 }

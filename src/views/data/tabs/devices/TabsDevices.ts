@@ -1,8 +1,11 @@
-import { ApiListResponse, ApiRequest, Device } from 'adamo-components'
+import { ApiListResponse, ApiRequest, Device, DeviceCreate, Group } from 'adamo-components'
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
 import { namespace } from 'vuex-class'
 
+import ModalDeviceForm from '@/components/modals/modal-device-form/ModalDeviceForm.vue'
+
 const devicesStore = namespace('devices')
+const groupsStore = namespace('groups')
 
 @Component({
   components: {
@@ -25,6 +28,8 @@ export default class TabsDevices extends Vue {
   tab
 
   @devicesStore.Action action_getDevices!: (params?: ApiRequest) => Promise<ApiListResponse<Device>>
+
+  @groupsStore.Action action_getGroups!: () => Promise<ApiListResponse<Group>>
 
   setPage (page: number): void {
     this.currentPage = page
@@ -65,6 +70,32 @@ export default class TabsDevices extends Vue {
 
   deleteDevice (deviceId: string): void {
     console.log('delete device', deviceId)
+  }
+
+  async showNewDeviceModal (): Promise<void> {
+    try {
+      this.$emit('loading', true)
+      const groups = await this.action_getGroups()
+
+      this.$modal({
+        component: ModalDeviceForm,
+        props: {
+          groups: groups.data
+        },
+        onOk: (formData: DeviceCreate) => {
+          console.log('fo', formData)
+        }
+      })
+    }
+    catch (error) {
+      this.$notify.error(this.$i18n.t('notification.error', {
+        action: this.$i18n.t('notification.actions.search'),
+        resource: (this.$i18n.t('fields.information') as string).toLowerCase()
+      }))
+    }
+    finally {
+      this.$emit('loading', false)
+    }
   }
 
   @Watch('tab')

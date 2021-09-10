@@ -10,6 +10,7 @@
         :label="$t('devices.new')"
         rounded
         type="is-orange"
+        @click="showNewDeviceModal"
       />
     </div>
   </div>
