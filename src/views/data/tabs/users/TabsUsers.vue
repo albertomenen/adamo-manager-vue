@@ -10,6 +10,7 @@
         :label="$t('users.new')"
         rounded
         type="is-orange"
+        @click="showNewUSerModal"
       />
     </div>
   </div>

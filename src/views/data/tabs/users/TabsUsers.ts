@@ -1,8 +1,12 @@
-import { ApiListResponse, ApiRequest, User } from 'adamo-components'
+import { ApiListResponse, ApiRequest, Group, Role, User, UserCreate } from 'adamo-components'
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
 import { namespace } from 'vuex-class'
 
+import ModalUserForm from '@/components/modals/modal-user-form/ModalUserForm.vue'
+
 const usersStore = namespace('users')
+const groupsStore = namespace('groups')
+const rolesStore = namespace('roles')
 
 @Component({
   components: {
@@ -25,6 +29,12 @@ export default class TabsUsers extends Vue {
   tab
 
   @usersStore.Action action_getUsers!: (params?: ApiRequest) => Promise<ApiListResponse<User>>
+
+  @usersStore.Action action_createUser!: (FormData: UserCreate) => Promise<User>
+
+  @groupsStore.Action action_getGroups!: () => Promise<ApiListResponse<Group>>
+
+  @rolesStore.Action action_getRoles!: () => Promise<ApiListResponse<Role>>
 
   created (): void {
     this.getUsers()
@@ -69,6 +79,52 @@ export default class TabsUsers extends Vue {
 
   deleteUser (userId: string): void {
     console.log('delete user', userId)
+  }
+
+  async showNewUSerModal (): Promise<void> {
+    try {
+      this.$emit('loading', true)
+      const groups = await this.action_getGroups()
+      const roles = await this.action_getRoles()
+
+      this.$modal({
+        component: ModalUserForm,
+        props: {
+          groups: groups.data,
+          roles: roles.data
+        },
+        onOk: async (formData: UserCreate) => {
+          try {
+            this.$emit('loading', true)
+            await this.action_createUser(formData)
+            this.$notify.success(this.$t('notification.success', {
+              noun: this.$t('nouns.theM'),
+              resource: this.$tc('users.num', 1),
+              action: this.$t('notification.actions.created')
+            }))
+            this.getUsers()
+          }
+          catch (error) {
+            this.$notify.error(this.$i18n.t('notification.error', {
+              action: this.$i18n.t('actions.create'),
+              resource: (this.$i18n.tc('users.num', 2) as string).toLowerCase()
+            }))
+          }
+          finally {
+            this.$emit('loading', false)
+          }
+        }
+      })
+    }
+    catch (error) {
+      this.$notify.error(this.$i18n.t('notification.error', {
+        action: this.$i18n.t('notification.actions.search'),
+        resource: (this.$i18n.t('fields.information') as string).toLowerCase()
+      }))
+    }
+    finally {
+      this.$emit('loading', false)
+    }
   }
 
   @Watch('tab')

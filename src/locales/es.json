@@ -20,7 +20,10 @@
   "users": {
     "num": "Usuario|Usuarios",
     "new": "Nuevo usuario",
-    "profile": "Perfil"
+    "profile": "Perfil",
+    "create": "Crear usuario",
+    "personalInfo": "Info. Personal",
+    "register": "Regístro usuario"
   },
 
   "devices": {
@@ -212,7 +215,8 @@
     "province": "Provincia",
     "contactPerson": "Persona de contacto",
     "upload": "Sube aquí el logo del grupo",
-    "code": "Código"
+    "code": "Código",
+    "username": "Nombre de usuario"
   },
 
   "login": {

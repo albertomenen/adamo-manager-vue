@@ -20,12 +20,16 @@
   "users": {
     "num": "User|Users",
     "new": "New user",
-    "profile": "Profile"
+    "profile": "Profile",
+    "create": "Create user",
+    "personalInfo": "Personal Info.",
+    "register": "User register"
   },
 
   "devices": {
     "num": "Device|Devices",
-    "new": "New device"
+    "new": "New device",
+    "room": "Room"
   },
 
   "patients": {
@@ -209,7 +213,7 @@
     "contactPerson": "Contact person",
     "upload": "Upload the group logo here",
     "code": "Code",
-    "room": "Room"
+    "username": "Nombre de usuario"
   },
 
   "login": {
