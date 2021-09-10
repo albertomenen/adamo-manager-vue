@@ -17,6 +17,18 @@
     "num": "Dato|Datos"
   },
 
+  "users": {
+    "num": "Usuario|Usuarios",
+    "new": "Nuevo usuario",
+    "profile": "Perfil"
+  },
+
+  "devices": {
+    "num": "Dispositivo|Dispositivos",
+    "new": "Nuevo dispositivo",
+    "room": "Sala"
+  },
+
   "patients": {
     "num": "Paciente|Pacientes",
     "list": "Lista de pacientes",
@@ -199,7 +211,8 @@
     "locationName": "Nombre de la localización",
     "province": "Provincia",
     "contactPerson": "Persona de contacto",
-    "upload": "Sube aquí el logo del grupo"
+    "upload": "Sube aquí el logo del grupo",
+    "code": "Código"
   },
 
   "login": {
@@ -265,5 +278,6 @@
   "date": "Fecha",
   "noData": "No hay datos",
   "sameOfGroup": "Rellenar campos con los mismos datos del grupo",
-  "generalInfo": "Información general"
+  "generalInfo": "Información general",
+  "myDateBase": "Mi base de datos"
 }

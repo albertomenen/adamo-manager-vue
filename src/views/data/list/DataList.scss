@@ -1,0 +1,23 @@
+@import "~adamo-components/src/assets/styles/colors.scss";
+
+.is-adamo-tab {
+  ul li {
+    &.is-active {
+      a {
+        background: $blue;
+        color: $white;
+        border-bottom-color: $blue;
+      }
+    }
+
+    a {
+      padding: 0.8rem 6rem 0.8rem 2rem;
+      width: fit-content;
+      border: 1px solid $gray;
+    }
+  }
+}
+
+.b-tabs .tab-content {
+  padding: 0;
+}

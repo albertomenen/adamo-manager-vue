@@ -17,6 +17,17 @@
     "num": "Data|Data"
   },
 
+  "users": {
+    "num": "User|Users",
+    "new": "New user",
+    "profile": "Profile"
+  },
+
+  "devices": {
+    "num": "Device|Devices",
+    "new": "New device"
+  },
+
   "patients": {
     "num": "Paciente|Pacientes",
     "list": "Patients list",
@@ -196,7 +207,9 @@
     "locationName": "Location name",
     "province": "Province",
     "contactPerson": "Contact person",
-    "upload": "Upload the group logo here"
+    "upload": "Upload the group logo here",
+    "code": "Code",
+    "room": "Room"
   },
 
   "login": {
@@ -262,5 +275,6 @@
   "date": "Date",
   "noData": "There is no data",
   "sameOfGroup": "Fill fields with the same group data",
-  "generalInfo": "General information"
+  "generalInfo": "General information",
+  "myDateBase": "My database"
 }

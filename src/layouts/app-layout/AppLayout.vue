@@ -34,6 +34,8 @@
               icon-pack="fas"
               :label="$tc('data.num', 2)"
               size="is-medium"
+              tag="router-link"
+              :to="{ name: 'dataUsers' }"
             />
             <BMenuItem
               :active="routeName.includes('patients') || routeName.includes('patient') || routeName.includes('treatment')"
