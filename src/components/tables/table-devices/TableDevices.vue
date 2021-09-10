@@ -26,7 +26,7 @@
     field="room"
     :label="$t('devices.room')"
   >
-    {{ props.row }}
+    {{ props.row.station.station_name }}
   </BTableColumn>
   <BTableColumn
     v-slot="props"
