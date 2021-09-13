@@ -46,7 +46,6 @@ describe('Login.vue', () => {
       user_name: 'foo',
       phone: '',
       last_name: 'Bar',
-      role: [],
       email: 'foo@bar.com'
     }))
     const routerSpy = jest.spyOn(wrapper.vm.$router, 'push')

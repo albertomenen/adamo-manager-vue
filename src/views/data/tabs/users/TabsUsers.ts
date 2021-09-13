@@ -1,4 +1,4 @@
-import { ApiListResponse, ApiRequest, Group, Role, User, UserCreate } from 'adamo-components'
+import { ApiListResponse, ApiRequest, Group, Role, User } from 'adamo-components'
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
 import { namespace } from 'vuex-class'
 
@@ -30,7 +30,9 @@ export default class TabsUsers extends Vue {
 
   @usersStore.Action action_getUsers!: (params?: ApiRequest) => Promise<ApiListResponse<User>>
 
-  @usersStore.Action action_createUser!: (FormData: UserCreate) => Promise<User>
+  @usersStore.Action action_createUser!: ({ role_code, formData }) => Promise<User>
+
+  @usersStore.Mutation set_selectedUser!: (user: User | undefined) => void
 
   @groupsStore.Action action_getGroups!: () => Promise<ApiListResponse<Group>>
 
@@ -70,7 +72,13 @@ export default class TabsUsers extends Vue {
   }
 
   showUser (userId: string): void {
-    console.log('show user', userId)
+    this.set_selectedUser(this.users.find(u => u.id_user === userId))
+    this.$router.push({
+      name: 'dataProfile',
+      params: {
+        userId
+      }
+    })
   }
 
   editUser (userId: string): void {
@@ -93,10 +101,13 @@ export default class TabsUsers extends Vue {
           groups: groups.data,
           roles: roles.data
         },
-        onOk: async (formData: UserCreate) => {
+        onOk: async ({ formData, roleSelected }) => {
           try {
             this.$emit('loading', true)
-            await this.action_createUser(formData)
+            await this.action_createUser({
+              role_code: roleSelected.role_code,
+              formData
+            })
             this.$notify.success(this.$t('notification.success', {
               noun: this.$t('nouns.theM'),
               resource: this.$tc('users.num', 1),

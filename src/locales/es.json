@@ -18,9 +18,14 @@
   },
 
   "users": {
+    "profile": {
+      "general": "Información general",
+      "device": "Dispositivo",
+      "userData": "Registro de usuario",
+      "label": "Perfil"
+    },
     "num": "Usuario|Usuarios",
     "new": "Nuevo usuario",
-    "profile": "Perfil",
     "create": "Crear usuario",
     "personalInfo": "Info. Personal",
     "register": "Regístro usuario"

@@ -33,8 +33,11 @@ export default class ModalUserForm extends Vue {
     id_location: null
   }
 
-  handleSubmit (): void {
+  handleSubmit (roleSelected: unknown): void {
     this.$emit('cancel')
-    this.$emit('ok', this.formData)
+    this.$emit('ok', {
+      formData: this.formData,
+      roleSelected
+    })
   }
 }
