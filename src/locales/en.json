@@ -35,7 +35,8 @@
     "num": "Device|Devices",
     "new": "New device",
     "room": "Room",
-    "create": "Device register"
+    "create": "Device register",
+    "detail": "Device detail"
   },
 
   "patients": {

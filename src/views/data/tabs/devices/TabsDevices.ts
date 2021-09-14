@@ -69,7 +69,12 @@ export default class TabsDevices extends Vue {
   }
 
   showDevice (deviceId: string): void {
-    console.log('show device', deviceId)
+    this.$router.push({
+      name: 'dataDeviceDetail',
+      params: {
+        deviceId
+      }
+    })
   }
 
   editDevice (deviceId: string): void {

@@ -12,6 +12,12 @@ const actions: ActionTree<DeviceStateInterface, StateInterface> = {
     return data
   },
 
+  async action_getDevice (_, deviceId: string): Promise<Device> {
+    const { data } = await axiosInstance.get(`/${ApiRoutes.Device}/${deviceId}`)
+
+    return data
+  },
+
   async action_getStations (_, { groupId, locationId }): Promise<ApiListResponse<StationList>> {
     const { data } = await axiosInstance.get(`/${ApiRoutes.Group}/${groupId}/${ApiRoutes.Location}/${locationId}/station`)
 

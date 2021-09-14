@@ -71,6 +71,27 @@ const dataRoutes: Array<RouteConfig> = [
                 }
               ]
             }
+          },
+          {
+            path: ':deviceId',
+            name: 'dataDeviceDetail',
+            component: () => import('@/views/data/details/devices/DetailsDevices.vue'),
+            meta: {
+              breadcrumb: [
+                {
+                  label: ['data.num', 2]
+                },
+                {
+                  label: ['devices.num', 2],
+                  link: {
+                    name: 'dataDevices'
+                  }
+                },
+                {
+                  label: 'devices.detail'
+                }
+              ]
+            }
           }
         ]
       }

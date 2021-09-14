@@ -35,7 +35,9 @@
     "num": "Dispositivo|Dispositivos",
     "new": "Nuevo dispositivo",
     "room": "Sala",
-    "create": "Registro de dispositivo"
+    "create": "Registro de dispositivo",
+    "detail": "Detalle del dispositivo",
+    "info": "Datos del dispositivo"
   },
 
   "patients": {
