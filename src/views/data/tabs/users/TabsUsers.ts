@@ -39,7 +39,9 @@ export default class TabsUsers extends Vue {
   @rolesStore.Action action_getRoles!: () => Promise<ApiListResponse<Role>>
 
   created (): void {
-    this.getUsers()
+    if (this.tab === 0) {
+      this.getUsers()
+    }
   }
 
   setPage (page: number): void {
