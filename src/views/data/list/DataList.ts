@@ -12,6 +12,12 @@ export default class DataList extends Vue {
 
   loadingPage = false
 
+  created (): void {
+    if (this.$route.name === 'dataDevices') {
+      this.tab = 1
+    }
+  }
+
   @Watch('tab')
   onChangeTab (value: number): void {
     switch (value) {
