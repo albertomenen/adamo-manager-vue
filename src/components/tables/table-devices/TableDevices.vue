@@ -18,7 +18,7 @@
     field="ubication"
     :label="$t('groups.ubication')"
   >
-    {{ props.row.station.location.location_name }}
+    {{ formatLocationName(props.row) }}
   </BTableColumn>
   <BTableColumn
     v-slot="props"
@@ -26,7 +26,7 @@
     field="room"
     :label="$t('devices.room')"
   >
-    {{ props.row.station.station_name }}
+    {{ formatRoomName(props.row) }}
   </BTableColumn>
   <BTableColumn
     v-slot="props"

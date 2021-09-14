@@ -225,7 +225,8 @@
     "username": "Nombre de usuario",
     "deviceName": "Nombre del dispositivo",
     "hwVersion": "Versión de hardware",
-    "swVersion": "Versión de software"
+    "swVersion": "Versión de software",
+    "station": "Estación"
   },
 
   "login": {
@@ -293,5 +294,6 @@
   "sameOfGroup": "Rellenar campos con los mismos datos del grupo",
   "generalInfo": "Información general",
   "myDateBase": "Mi base de datos",
-  "instalationDate": "Fecha de instalación"
+  "instalationDate": "Fecha de instalación",
+  "stations": "Estaciones"
 }

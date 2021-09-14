@@ -222,7 +222,8 @@
     "username": "Nombre de usuario",
     "deviceName": "Device name",
     "hwVersion": "Hardware version",
-    "swVersion": "Software version"
+    "swVersion": "Software version",
+    "station": "Station"
   },
 
   "login": {
@@ -275,7 +276,7 @@
   "observations": "Observations",
   "scheduleNextSession": "Schedule next appointment",
   "scheduleAvailable": "Schedule available",
-  "selectedDay": "Día seleccionado",
+  "selectedDay": "Selected day",
   "selectTime": "Select the appointment time",
   "deviceTemp": "Device temp.",
   "confirmation": "Confirm the action",
@@ -289,5 +290,6 @@
   "noData": "There is no data",
   "sameOfGroup": "Fill fields with the same group data",
   "generalInfo": "General information",
-  "myDateBase": "My database"
+  "myDateBase": "My database",
+  "stations": "Stations"
 }

@@ -23,4 +23,16 @@ export default class TableDevices extends Vue {
   deleteDevice (device: Device): void {
     this.$emit('device:delete', device.id_device)
   }
+
+  formatLocationName (device: Device): string {
+    return device.station
+      ? device.station.location.location_name
+      : ''
+  }
+
+  formatRoomName (device: Device): string {
+    return device.station
+      ? device.station.station_name
+      : ''
+  }
 }

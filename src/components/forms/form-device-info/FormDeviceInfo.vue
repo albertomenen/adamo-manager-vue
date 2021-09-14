@@ -7,7 +7,7 @@
       :placeholder="$t('fields.deviceName')"
     />
     <BSelect
-      v-model="formData.group_id"
+      v-model="groupSelected"
       class="column is-full"
       expanded
       :placeholder="$t('fields.group')"
@@ -16,13 +16,15 @@
       <option
         v-for="group in groups"
         :key="group.id_group"
-        :value="group.id_group"
+        :value="group"
       >
         {{ group.group_name }}
       </option>
     </BSelect>
-    <!-- <BSelect
+    <BSelect
+      v-model="locationSelected"
       class="column is-full"
+      :disabled="fieldLocationDisabled"
       expanded
       :placeholder="$t('fields.location')"
       rounded
@@ -34,18 +36,25 @@
       >
         {{ location.location_name }}
       </option>
-    </BSelect> -->
-    <!-- <BDatepicker
+    </BSelect>
+
+    <BSelect
+      v-model="formData.station_id"
       class="column is-full"
+      :disabled="fieldStationDisabled"
       expanded
-      icon="calendar"
-      icon-pack="fas"
-      :locale="$i18n.locale"
-      :placeholder="$t('instalationDate')"
-      :mobile-native="false"
+      :loading="loadingStations"
+      :placeholder="$t('fields.station')"
       rounded
-      trap-focus
-    /> -->
+    >
+      <option
+        v-for="station in stations"
+        :key="station.id_station"
+        :value="station.id_station"
+      >
+        {{ station.station_name }}
+      </option>
+    </BSelect>
     <AInput
       v-model="formData.serial_number"
       class="column is-half"

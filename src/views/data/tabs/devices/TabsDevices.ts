@@ -29,7 +29,15 @@ export default class TabsDevices extends Vue {
 
   @devicesStore.Action action_getDevices!: (params?: ApiRequest) => Promise<ApiListResponse<Device>>
 
+  @devicesStore.Action action_createDevice!: (deviceForm: DeviceCreate) => Promise<Device>
+
   @groupsStore.Action action_getGroups!: () => Promise<ApiListResponse<Group>>
+
+  created (): void {
+    if (this.tab === 1) {
+      this.getDevices()
+    }
+  }
 
   setPage (page: number): void {
     this.currentPage = page
@@ -83,7 +91,13 @@ export default class TabsDevices extends Vue {
           groups: groups.data
         },
         onOk: (formData: DeviceCreate) => {
-          console.log('fo', formData)
+          this.action_createDevice(formData)
+          this.$notify.success(this.$t('notification.success', {
+            noun: this.$t('nouns.theM'),
+            resource: this.$tc('devices.num', 1),
+            action: this.$t('notification.actions.created')
+          }))
+          this.getDevices()
         }
       })
     }
