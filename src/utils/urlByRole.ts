@@ -1,26 +1,26 @@
-import { ApiRoutes, User } from 'adamo-components'
+import { ApiRoutes } from 'adamo-components'
 
-export function formatRouteWithUser (user: User): string {
+export function formatRouteWithUser (role_code: string, userId: string, groupId?: string, locationId?: string): string {
   let url = ''
-  switch (user.role?.role_code) {
+  switch (role_code) {
     case 'sys_admin':
-      url = `/${ApiRoutes.SysAdmin}/${user.id_user}`
+      url = `/${ApiRoutes.SysAdmin}/${userId}`
       break
 
     case 'dev':
-      url = `/${ApiRoutes.Developer}/${user.id_user}`
+      url = `/${ApiRoutes.Developer}/${userId}`
       break
 
     case 'practice_manager':
-      url = `/${ApiRoutes.Group}/${user.id_group}/${ApiRoutes.Location}/${user.id_location}/${ApiRoutes.PracticeManager}/${user.id_user}`
+      url = `/${ApiRoutes.Group}/${groupId}/${ApiRoutes.Location}/${locationId}/${ApiRoutes.PracticeManager}/${userId}`
       break
 
     case 'mp':
-      url = `/${ApiRoutes.Group}/${user.id_group}/${ApiRoutes.Location}/${user.id_location}/${ApiRoutes.MP}/${user.id_user}`
+      url = `/${ApiRoutes.Group}/${groupId}/${ApiRoutes.Location}/${locationId}/${ApiRoutes.MP}/${userId}`
       break
 
     case 'nmp':
-      url = `/${ApiRoutes.Group}/${user.id_group}/${ApiRoutes.Location}/${user.id_location}/${ApiRoutes.NMP}/${user.id_user}`
+      url = `/${ApiRoutes.Group}/${groupId}/${ApiRoutes.Location}/${locationId}/${ApiRoutes.NMP}/${userId}`
       break
   }
 
