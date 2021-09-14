@@ -46,7 +46,7 @@ const dataRoutes: Array<RouteConfig> = [
                   }
                 },
                 {
-                  label: 'users.profile'
+                  label: 'users.profile.label'
                 }
               ]
             }

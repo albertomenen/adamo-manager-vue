@@ -13,7 +13,7 @@ import { Component, Vue } from 'vue-property-decorator'
 export default class TableUsers extends Vue {
 
   showUser (user: User): void {
-    this.$emit('user:show', user.id_user)
+    this.$emit('user:show', user)
   }
 
   editUser (user: User): void {

@@ -32,8 +32,6 @@ export default class TabsUsers extends Vue {
 
   @usersStore.Action action_createUser!: ({ role_code, formData }) => Promise<User>
 
-  @usersStore.Mutation set_selectedUser!: (user: User | undefined) => void
-
   @groupsStore.Action action_getGroups!: () => Promise<ApiListResponse<Group>>
 
   @rolesStore.Action action_getRoles!: () => Promise<ApiListResponse<Role>>
@@ -73,13 +71,26 @@ export default class TabsUsers extends Vue {
     }
   }
 
-  showUser (userId: string): void {
-    this.set_selectedUser(this.users.find(u => u.id_user === userId))
+  showUser (user: User): void {
+    const query = {
+      roleCode: user.role?.role_code,
+      groupId: '',
+      locationId: ''
+    }
+    switch (user.role?.role_code) {
+      case 'practice_manager':
+      case 'mp':
+      case 'nmp':
+        query.groupId = user.id_group
+        query.locationId = user.id_location
+        break
+    }
     this.$router.push({
       name: 'dataProfile',
       params: {
-        userId
-      }
+        userId: user.id_user
+      },
+      query
     })
   }
 

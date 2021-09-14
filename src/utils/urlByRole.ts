@@ -22,6 +22,10 @@ export function formatRouteWithUser (role_code: string, userId: string, groupId?
     case 'nmp':
       url = `/${ApiRoutes.Group}/${groupId}/${ApiRoutes.Location}/${locationId}/${ApiRoutes.NMP}/${userId}`
       break
+
+    case 'patient':
+      url = `/${ApiRoutes.Group}/${groupId}/${ApiRoutes.Patients}/${userId}`
+      break
   }
 
   return url
