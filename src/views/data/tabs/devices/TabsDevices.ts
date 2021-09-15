@@ -31,6 +31,8 @@ export default class TabsDevices extends Vue {
 
   @devicesStore.Action action_createDevice!: (deviceForm: DeviceCreate) => Promise<Device>
 
+  @devicesStore.Action action_deleteDevice!: (deviceId: string) => Promise<void>
+
   @groupsStore.Action action_getGroups!: () => Promise<ApiListResponse<Group>>
 
   created (): void {
@@ -81,8 +83,26 @@ export default class TabsDevices extends Vue {
     console.log('edit device', deviceId)
   }
 
-  deleteDevice (deviceId: string): void {
-    console.log('delete device', deviceId)
+  async deleteDevice (deviceId: string): Promise<void> {
+    try {
+      this.$emit('loading', true)
+      await this.action_deleteDevice(deviceId)
+      this.$notify.success(this.$t('notification.success', {
+        noun: this.$t('nouns.theM'),
+        resource: this.$tc('devices.num', 1),
+        action: this.$t('notification.actions.deleted')
+      }))
+      this.getDevices()
+    }
+    catch (error) {
+      this.$notify.error(this.$i18n.t('notification.error', {
+        action: (this.$i18n.t('actions.delete') as string).toLowerCase(),
+        resource: (this.$i18n.tc('devices.num', 1) as string).toLowerCase()
+      }))
+    }
+    finally {
+      this.$emit('loading', false)
+    }
   }
 
   async showNewDeviceModal (): Promise<void> {

@@ -28,6 +28,12 @@ const actions: ActionTree<DeviceStateInterface, StateInterface> = {
     const { data } = await axiosInstance.post(`/${ApiRoutes.Device}`, deviceForm)
 
     return data
+  },
+
+  async action_deleteDevice (_, deviceId: string): Promise<Device> {
+    const { data } = await axiosInstance.delete(`/${ApiRoutes.Device}/${deviceId}`)
+
+    return data
   }
 }
 
