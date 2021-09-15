@@ -84,6 +84,10 @@ export default class TabsUsers extends Vue {
         query.groupId = user.id_group
         query.locationId = user.id_location
         break
+
+      case 'patient':
+        query.groupId = user.id_group
+        break
     }
     this.$router.push({
       name: 'dataProfile',
