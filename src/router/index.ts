@@ -9,6 +9,7 @@ import groups from './routes/groups'
 import patients from './routes/patients'
 import treatments from './routes/treatments'
 import data from './routes/data'
+import user from './routes/user'
 
 Vue.use(VueRouter)
 
@@ -18,7 +19,8 @@ const routes: Array<RouteConfig> = [
   ...groups,
   ...patients,
   ...treatments,
-  ...data
+  ...data,
+  ...user
 ]
 
 const router = new VueRouter({
