@@ -12,6 +12,26 @@
         />
         <div class="is-text-h2 has-text-title ml-4">{{ device.device_name }}</div>
       </div>
+      <div
+        v-if="getDeviceEditContext"
+        class="has-gap-x-2"
+      >
+        <BButton
+          class="has-text-title has-shadow"
+          :label="$t('actions.cancel')"
+          rounded
+          type="is-white"
+          @click="cancelDeviceUpdate"
+        />
+        <BButton
+          class="has-text-white has-shadow"
+          icon-pack="fas"
+          :label="$t('actions.saveChanges')"
+          rounded
+          type="is-orange"
+          @click="updateDevice"
+        />
+      </div>
     </div>
     <BTabs
       v-model="tab"
@@ -24,6 +44,7 @@
       >
         <FormDeviceDetail
           :device="device"
+          @loading="loadingPage = $event"
         />
       </BTabItem>
     </BTabs>

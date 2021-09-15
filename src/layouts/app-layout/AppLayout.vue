@@ -12,9 +12,9 @@
       <div class="">
         <div class="block sidebar-block has-text-centered m-0">
           <img
-            alt=""
-            class="sidebar-logo p-2"
-            src="@/assets/logo_grupo.svg"
+            alt="adamo-logo"
+            class="sidebar-logo p-4"
+            src="@/assets/logo-white.png"
           />
         </div>
         <BMenu class="is-custom-mobile mt-10">
@@ -52,17 +52,7 @@
     </BSidebar>
 
     <div class="content-section">
-      <header class="has-text-white has-background-blue py-2 px-4 is-flex is-justify-content-space-between is-align-items-center navbar">
-        <div>
-          <span class="is-size-7">
-            powered by&nbsp;
-          </span>
-          <img
-            alt="adamo-logo"
-            src="@/assets/logo-white.png"
-            style="height: 18px;"
-          >
-        </div>
+      <header class="has-text-white has-background-blue py-2 px-4 is-flex is-justify-content-end is-align-items-center navbar">
         <div>
           <AMenuUser
             :showAgenda="false"

@@ -33,6 +33,8 @@ export default class TabsDevices extends Vue {
 
   @devicesStore.Action action_deleteDevice!: (deviceId: string) => Promise<void>
 
+  @devicesStore.Mutation setDeviceEditContext!: (context: boolean) => void
+
   @groupsStore.Action action_getGroups!: () => Promise<ApiListResponse<Group>>
 
   created (): void {
@@ -80,7 +82,8 @@ export default class TabsDevices extends Vue {
   }
 
   editDevice (deviceId: string): void {
-    console.log('edit device', deviceId)
+    this.setDeviceEditContext(true)
+    this.showDevice(deviceId)
   }
 
   async deleteDevice (deviceId: string): Promise<void> {
