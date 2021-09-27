@@ -1,7 +1,7 @@
 <template>
 <div>
   <template v-if="user">
-    <div class="is-flex is-justify-content-space-between">
+    <div class="is-flex is-align-items-center is-justify-content-space-between">
       <div class="is-flex is-align-items-center">
         <BButton
           class="is-round has-text-title has-shadow"
@@ -12,6 +12,14 @@
         />
         <div class="is-text-h2 has-text-title ml-4">{{ getUserName }}</div>
       </div>
+      <BButton
+        v-if="isEditing"
+        class="has-shadow has-text-white"
+        label="Guardar usuario"
+        rounded
+        type="is-orange"
+        @click="saveUser"
+      />
     </div>
     <BTabs
       v-model="tab"

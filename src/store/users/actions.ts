@@ -20,11 +20,23 @@ const actions: ActionTree<UserStateInterface, StateInterface> = {
     return data
   },
 
+  async action_updateUser (_, { user, role_code, groupId, locationId }): Promise<User> {
+    const url = formatRouteWithUser(role_code, user.id_user, groupId, locationId)
+    const { data } = await axiosInstance.put(url, user)
+
+    return data
+  },
+
   async action_createUser (_, { role_code, formData }): Promise<User> {
     const url = formatRouteWithUserCreate(role_code, formData.id_group, formData.id_location)
     const { data } = await axiosInstance.post(url, formData)
 
     return data
+  },
+
+  async action_deleteUser (_, { userId, role_code, groupId, locationId }): Promise<void> {
+    const url = formatRouteWithUser(role_code, userId, groupId, locationId)
+    return axiosInstance.delete(url)
   }
 }
 

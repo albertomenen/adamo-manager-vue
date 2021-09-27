@@ -23,14 +23,13 @@ export default class TabsUsers extends Vue {
 
   totalPages = 0
 
-  @Prop({
-    type: Number
-  })
-  tab
+  @Prop({ type: Number }) tab
 
   @usersStore.Action action_getUsers!: (params?: ApiRequest) => Promise<ApiListResponse<User>>
 
   @usersStore.Action action_createUser!: ({ role_code, formData }) => Promise<User>
+  @usersStore.Action action_deleteUser!: ({ userId, role_code, groupId, locationId }) => Promise<void>
+  @usersStore.Mutation setEditing
 
   @groupsStore.Action action_getGroups!: () => Promise<ApiListResponse<Group>>
 
@@ -53,7 +52,7 @@ export default class TabsUsers extends Vue {
       const { data, pagination } = await this.action_getUsers({
         ...params,
         page: this.currentPage,
-        size: 7
+        size: 6
       })
 
       this.users = data
@@ -98,19 +97,47 @@ export default class TabsUsers extends Vue {
     })
   }
 
-  editUser (userId: string): void {
-    console.log('edit user', userId)
+  editUser (user: User): void {
+    this.setEditing(true)
+    this.showUser(user)
   }
 
-  deleteUser (userId: string): void {
-    console.log('delete user', userId)
+  async deleteUser (user: User): Promise<void> {
+    try {
+      this.$emit('loading', true)
+      await this.action_deleteUser({
+        userId: user.id_user,
+        role_code: user.role!.role_code,
+        groupId: user.id_group,
+        locationId: user.id_location
+      })
+      this.$notify.success(this.$t('notification.success', {
+        noun: this.$t('nouns.theM'),
+        resource: this.$tc('users.num', 1),
+        action: this.$t('notification.actions.deleted')
+      }))
+      this.getUsers()
+    }
+    catch (e) {
+      this.$notify.error(this.$t('notification.error', {
+        noun: this.$t('nouns.theM'),
+        resource: this.$tc('users.num', 1),
+        action: this.$t('actions.delete')
+      }))
+    }
+    finally {
+      this.$emit('loading', false)
+
+    }
   }
 
   async showNewUSerModal (): Promise<void> {
     try {
       this.$emit('loading', true)
-      const groups = await this.action_getGroups()
-      const roles = await this.action_getRoles()
+      const [groups, roles] = await Promise.all([
+        this.action_getGroups(),
+        this.action_getRoles()
+      ])
 
       this.$modal({
         component: ModalUserForm,

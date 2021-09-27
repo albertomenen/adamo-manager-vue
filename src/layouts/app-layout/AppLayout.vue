@@ -63,7 +63,7 @@
         <ABreadcrumb
           textColor="has-text-title"
         />
-        <div class="page-content is-fullheigth mt-6">
+        <div class="page-content is-fullheight mt-6">
           <RouterView />
         </div>
       </div>

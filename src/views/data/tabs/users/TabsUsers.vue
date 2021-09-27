@@ -26,7 +26,9 @@
   </div>
   <APagination
     v-if="totalPages > 1"
+    class="is-flex is-justify-content-center mt-8"
     :current="currentPage"
+    style="position: relative;"
     :total="totalRecords"
     @change="setPage"
   />

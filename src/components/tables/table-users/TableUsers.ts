@@ -17,10 +17,10 @@ export default class TableUsers extends Vue {
   }
 
   editUser (user: User): void {
-    this.$emit('user:edit', user.id_user)
+    this.$emit('user:edit', user)
   }
 
   deleteUser (user: User): void {
-    this.$emit('user:delete', user.id_user)
+    this.$emit('user:delete', user)
   }
 }
