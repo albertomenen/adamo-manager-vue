@@ -40,6 +40,7 @@
     class="mb-8"
     style="margin-top: -50px;"
     :user="user"
+    @save="saveProfile"
   />
 </div>
 </template>

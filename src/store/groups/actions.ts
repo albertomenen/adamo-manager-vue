@@ -2,7 +2,7 @@ import { ActionTree } from 'vuex'
 import { StateInterface } from 'src/store/index'
 import { GroupsStateInterface } from './state'
 import { axiosInstance } from '@/utils/axios'
-import { ApiRequest, ApiRoutes, Group, GroupList, Location } from 'adamo-components'
+import { ApiListResponse, ApiRequest, ApiRoutes, Group, GroupList, Location } from 'adamo-components'
 import { GroupCreate } from '@/models/group.model'
 
 const actions: ActionTree<GroupsStateInterface, StateInterface> = {
@@ -15,6 +15,21 @@ const actions: ActionTree<GroupsStateInterface, StateInterface> = {
     const { data } = await axiosInstance.get(`/${ApiRoutes.Group}`, { params })
 
     return data
+  },
+
+  /**
+   * Obtener listado de todos los grupos
+   * @param params - Parametros de paginacion
+   */
+  async action_getAllGroups ({ commit }): Promise<void> {
+    const { data } = await axiosInstance.get<ApiListResponse<GroupList>>(`/${ApiRoutes.Group}`, {
+      params: {
+        page: 1,
+        size: 999999
+      }
+    })
+
+    commit('setGroups', data.data)
   },
 
   /**

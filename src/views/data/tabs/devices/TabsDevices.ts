@@ -1,4 +1,4 @@
-import { ApiListResponse, ApiRequest, Device, DeviceCreate, Group } from 'adamo-components'
+import { ApiListResponse, ApiRequest, Device, DeviceCreate } from 'adamo-components'
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
 import { namespace } from 'vuex-class'
 
@@ -35,7 +35,7 @@ export default class TabsDevices extends Vue {
 
   @devicesStore.Mutation setDeviceEditContext!: (context: boolean) => void
 
-  @groupsStore.Action action_getGroups!: () => Promise<ApiListResponse<Group>>
+  @groupsStore.Getter getGroups
 
   created (): void {
     if (this.tab === 1) {
@@ -111,7 +111,7 @@ export default class TabsDevices extends Vue {
   async showNewDeviceModal (): Promise<void> {
     try {
       this.$emit('loading', true)
-      const groups = await this.action_getGroups()
+      const groups = await this.getGroups
 
       this.$modal({
         component: ModalDeviceForm,

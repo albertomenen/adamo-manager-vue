@@ -14,6 +14,10 @@ const getters: GetterTree<GroupsStateInterface, StateInterface> = {
 
   getIdLocationEdit (state) {
     return state.idLocationEdit
+  },
+
+  getGroups (state) {
+    return state.groups
   }
 }
 

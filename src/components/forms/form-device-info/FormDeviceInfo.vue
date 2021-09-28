@@ -76,7 +76,7 @@
       :placeholder="$t('fields.swVersion')"
     />
   </div>
-  <div class="is-flex is-justify-content-center mt-20">
+  <div class="is-flex is-justify-content-center mt-10">
     <BButton
       class="has-text-white"
       rounded

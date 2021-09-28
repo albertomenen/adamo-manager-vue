@@ -10,6 +10,17 @@ const actions: ActionTree<RoleStateInterface, StateInterface> = {
     const { data } = await axiosInstance.get('/role')
 
     return data
+  },
+
+  async action_getAllRoles ({ commit }): Promise<void> {
+    const { data } = await axiosInstance.get('/role', {
+      params: {
+        page: 1,
+        size: 999999
+      }
+    })
+
+    commit('setRoles', data.data)
   }
 }
 

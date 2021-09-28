@@ -1,4 +1,4 @@
-import { ApiListResponse, ApiRequest, Group, Role, User } from 'adamo-components'
+import { ApiListResponse, ApiRequest, User } from 'adamo-components'
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
 import { namespace } from 'vuex-class'
 
@@ -31,9 +31,9 @@ export default class TabsUsers extends Vue {
   @usersStore.Action action_deleteUser!: ({ userId, role_code, groupId, locationId }) => Promise<void>
   @usersStore.Mutation setEditing
 
-  @groupsStore.Action action_getGroups!: () => Promise<ApiListResponse<Group>>
+  @groupsStore.Getter getGroups
 
-  @rolesStore.Action action_getRoles!: () => Promise<ApiListResponse<Role>>
+  @rolesStore.Getter getRoles
 
   created (): void {
     if (this.tab === 0) {
@@ -134,16 +134,12 @@ export default class TabsUsers extends Vue {
   async showNewUSerModal (): Promise<void> {
     try {
       this.$emit('loading', true)
-      const [groups, roles] = await Promise.all([
-        this.action_getGroups(),
-        this.action_getRoles()
-      ])
 
       this.$modal({
         component: ModalUserForm,
         props: {
-          groups: groups.data,
-          roles: roles.data
+          groups: this.getGroups,
+          roles: this.getRoles
         },
         onOk: async ({ formData, roleSelected }) => {
           try {

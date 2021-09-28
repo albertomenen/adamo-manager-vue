@@ -1,4 +1,4 @@
-import { ApiListResponse, Group, User } from 'adamo-components'
+import { Group, User } from 'adamo-components'
 import { PropType } from 'vue'
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
 import { namespace } from 'vuex-class'
@@ -33,12 +33,12 @@ export default class FormUsersDetail extends Vue {
     return this.groups.find(o => o.id_group === this.currentGroup)?.locations
   }
 
-  @groupsStore.Action action_getGroups!: () => Promise<ApiListResponse<Group>>
+  @groupsStore.Getter getGroups
 
 
   async created () {
     this.loadingGroups = true
-    const groups = await this.action_getGroups()
+    const groups = await this.getGroups
     this.groups = groups.data
     this.loadingGroups = false
   }

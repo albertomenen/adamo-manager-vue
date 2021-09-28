@@ -1,3 +1,4 @@
+import { Group } from 'adamo-components'
 import { MutationTree } from 'vuex'
 import { GroupsStateInterface } from './state'
 
@@ -13,6 +14,10 @@ const mutations: MutationTree<GroupsStateInterface> = {
 
   setIdLocationEdit (state, locationId: string) {
     state.idLocationEdit = locationId
+  },
+
+  setGroups (state, groups: Group[]): void {
+    state.groups = groups
   }
 }
 

@@ -13,8 +13,6 @@ export default class FormDeviceDetail extends Vue {
 
   locationName = ''
 
-  groups: Group[] = []
-
   groupSelected: Group | null = null
 
   fieldLocationDisabled = true
@@ -41,28 +39,11 @@ export default class FormDeviceDetail extends Vue {
 
   @devicesStore.Action action_getStations!: ({ groupId, locationId }) => Promise<ApiListResponse<StationList>>
 
-  @groupsStore.Action action_getGroups!: () => Promise<ApiListResponse<Group>>
+  @groupsStore.Getter getGroups
 
   created (): void {
     this.locationName = this.device.station?.location?.location_name ?? ''
     this.groupName = this.device.group?.group_name
-  }
-
-  async getGroups (): Promise<void> {
-    try {
-      this.$emit('loading', true)
-      const { data } = await this.action_getGroups()
-      this.groups = data
-    }
-    catch (error) {
-      this.$notify.error(this.$i18n.t('notification.error', {
-        action: this.$i18n.t('notification.actions.search'),
-        resource: (this.$i18n.t('fields.information') as string).toLowerCase()
-      }))
-    }
-    finally {
-      this.$emit('loading', false)
-    }
   }
 
   async getStations (): Promise<void> {

@@ -19,6 +19,10 @@ export default class Profile extends Vue {
   user!: User
 
   created (): void {
-    this.user = this.getUser
+    this.user = JSON.parse(JSON.stringify(this.getUser))
+  }
+
+  saveProfile () {
+    console.log(this.user)
   }
 }
