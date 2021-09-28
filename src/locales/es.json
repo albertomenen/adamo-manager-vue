@@ -297,5 +297,6 @@
   "generalInfo": "Información general",
   "myDateBase": "Mi base de datos",
   "instalationDate": "Fecha de instalación",
-  "stations": "Estaciones"
+  "stations": "Estaciones",
+  "resetEmail": "Reestablecer correo"
 }

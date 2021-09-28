@@ -43,23 +43,34 @@
           :readonly="!isEditing"
         />
         <BSelect
+          v-model="user.id_group"
           class="column"
           :disabled="!isEditing"
           expanded
+          :loading="loadingGroups"
           :placeholder="$t('fields.group')"
-          :readonly="!isEditing"
           rounded
         >
-          <option value="foo">bar</option>
+          <option
+            v-for="group in groups"
+            :key="group.id_group"
+            :value="group.id_group">{{group.group_name}}</option>
         </BSelect>
         <BSelect
+          v-model="user.id_location"
           class="column"
           :disabled="!isEditing"
           expanded
+          :loading="loadingGroups"
           :placeholder="$t('fields.location')"
-          :readonly="!isEditing"
           rounded
-        />
+        >
+          <option
+            v-for="location in locations"
+            :key="location.id_location"
+            :value="location.id_location">{{location.location_name}}</option>
+        </BSelect>
+
       </div>
     </div>
     <div class="is-adamo-card-dark my-4">
@@ -68,38 +79,30 @@
           {{ $t('users.profile.userData') }}
         </div>
         <BButton
-          v-if="!isEditing"
+          v-if="!isEditingRegisterInfo"
           class="has-text-dark-blue"
           icon-pack="fas"
           icon-right="pen"
           type="is-ghost"
-          @click="setEditing(true)"
+          @click="setEditingRegisterInfo(true)"
         />
       </div>
-      <div class="columns is-multiline">
+      <div class="is-flex">
         <AInput
           v-model="user.email"
-          class="column is-full"
+          class="is-flex-grow-1 mr-4"
           icon="envelope"
           icon-pack="far"
           :placeholder="$t('fields.email')"
-          :readonly="!isEditing"
+          :readonly="!isEditingRegisterInfo"
         />
-        <AInput
-          class="column is-half"
-          icon-pack="fas"
-          :password-reveal="true"
-          :placeholder="$t('fields.password')"
-          :readonly="!isEditing"
-          type="password"
-        />
-        <AInput
-          class="column is-half"
-          icon-pack="fas"
-          :password-reveal="true"
-          :placeholder="$t('fields.passwordConf')"
-          :readonly="!isEditing"
-          type="password"
+        <BButton
+          v-if="isEditingRegisterInfo"
+          class="has-text-blue has-shadow"
+          :label="$t('resetEmail')"
+          rounded
+          type="is-white"
+          @click="$emit('save')"
         />
       </div>
     </div>

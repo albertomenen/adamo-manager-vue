@@ -32,6 +32,7 @@
       >
         <FormUsersDetail
           :user="user"
+          @save="saveUser"
         />
       </BTabItem>
     </BTabs>

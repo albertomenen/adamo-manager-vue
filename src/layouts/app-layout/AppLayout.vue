@@ -2,6 +2,7 @@
 <div class="sidebar-page">
   <section class="sidebar-layout">
     <BSidebar
+      class="is-adamo-sidebar"
       :fullheight="true"
       icon="fas"
       mobile="reduce"
@@ -23,7 +24,7 @@
               :active="routeName.includes('groups') || routeName.includes('group')"
               icon="hospital"
               icon-pack="fas"
-              :label="$tc('groups.num', 2)"
+              :label="$tc('groups.num', 2).toUpperCase()"
               size="is-medium"
               tag="router-link"
               :to="{ name: 'groupsList' }"
@@ -32,7 +33,7 @@
               :active="routeName.includes('data')"
               icon="notes-medical"
               icon-pack="fas"
-              :label="$tc('data.num', 2)"
+              :label="$tc('data.num', 2).toUpperCase()"
               size="is-medium"
               tag="router-link"
               :to="{ name: 'dataUsers' }"
@@ -41,7 +42,7 @@
               :active="routeName.includes('patients') || routeName.includes('patient') || routeName.includes('treatment')"
               icon="hospital-user"
               icon-pack="fas"
-              :label="$tc('patients.num', 2)"
+              :label="$tc('patients.num', 2).toUpperCase()"
               size="is-medium"
               tag="router-link"
               :to="{ name: 'patientsList' }"
@@ -77,6 +78,10 @@
 <style lang="scss">
 @import "~adamo-components/src/assets/styles/colors";
 
+.sidebar-content {
+  width: 200px !important;
+}
+
 .sidebar-page {
   display: flex;
   flex-direction: column;
@@ -106,15 +111,15 @@
 }
 .menu {
   .menu-list li {
-    height: 70px;
+    height: 50px;
     margin-bottom: 11px;
 
     .icon-text {
       color: white;
       font-weight: 600;
-      font-size: 18px;
+      font-size: 15px;
       padding-top: 16px;
-      height: 70px;
+      height: 50px;
     }
 
     .icon {
@@ -166,11 +171,6 @@
         }
       }
     }
-  }
-}
-@media screen and (min-width: 769px) {
-  .menu {
-    padding-left: 3rem !important;
   }
 }
 </style>

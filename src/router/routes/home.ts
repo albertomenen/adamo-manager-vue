@@ -4,7 +4,7 @@ const homeRoutes: Array<RouteConfig> = [
   {
     path: '/',
     name: 'home',
-    redirect: { name: 'groupsList' }
+    redirect: { name: 'dataUsers' }
   }
 ]
 

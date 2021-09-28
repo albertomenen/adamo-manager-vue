@@ -19,7 +19,15 @@
     field="rol"
     :label="$t('fields.role')"
   >
-    {{ props.row.role.role_name }}
+    <div
+      class="is-flex is-justify-content-center is-text-p">
+      <div
+        class="has-text-white px-4 py-1"
+        :class="`has-background-${badgeColor(props.row.role.role_name)}`"
+        style="border-radius: 20px">
+        {{ props.row.role.role_name }}
+      </div>
+    </div>
   </BTableColumn>
   <BTableColumn
     v-slot="props"

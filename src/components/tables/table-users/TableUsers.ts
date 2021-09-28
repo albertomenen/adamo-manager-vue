@@ -23,4 +23,13 @@ export default class TableUsers extends Vue {
   deleteUser (user: User): void {
     this.$emit('user:delete', user)
   }
+
+  badgeColor (role: string) {
+    switch (role) {
+      case 'Practice Manager': return 'medium-blue'
+      case 'MP': return 'blue'
+      case 'NMP': return 'orange'
+      default: return 'white'
+    }
+  }
 }
