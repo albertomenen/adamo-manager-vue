@@ -1,7 +1,7 @@
 <template>
 <div>
   <template v-if="treatment">
-    <div class="is-flex is-justify-content-space-between is-align-items-center">
+    <div class="is-flex is-justify-content-space-between">
       <div class="is-flex">
         <BButton
           class="is-round has-text-title has-shadow"
@@ -14,27 +14,27 @@
       </div>
       <div class="is-flex has-gap-x-2">
         <div>
-          <div class="is-text-h4 has-font-comfortaa has-text-medium-blue mb-2">{{$t('treatments.treatmentStart')}}</div>
+          <div class="is-text-h4 has-font-comfortaa has-text-medium-blue">{{$t('treatments.treatmentStart')}}</div>
           <AInput
-            v-model="formatInitialDate"
             class="treatment-icon"
             icon="calendar-check"
             icon-pack="far"
             placeholder="DD / MM / AAAA"
             readonly
             style="width: 200px;"
+            :value="formatInitialDate"
           />
         </div>
         <div>
-          <div class="is-text-h4 has-font-comfortaa has-text-medium-blue mb-2">{{$t('treatments.nextSession')}}</div>
+          <div class="is-text-h4 has-font-comfortaa has-text-medium-blue">{{$t('treatments.nextSession')}}</div>
           <AInput
-            v-model="formatNextSchedule"
             class="treatment-icon"
             icon="calendar"
             icon-pack="far"
             placeholder="DD / MM / AAAA"
             readonly
             style="width: 200px;"
+            :value="formatNextSchedule"
           />
         </div>
       </div>
@@ -77,7 +77,7 @@
               icon-pack="fas"
               :placeholder="$t('patients.injuryDescription')"
               readonly
-              :value="treatment.injury"
+              :value="getInjury"
             />
           </div>
         </div>
@@ -108,40 +108,36 @@
 
     <div class="is-text-h2 has-text-dark-blue my-6">{{$t('fields.params')}}</div>
 
-    <div class="columns px-12 mb-0">
-      <div class="column is-4 has-gap-y-4">
+    <div class="columns">
+      <div class="column is-3 has-gap-y-4">
         <ATreatmentConfigurationField
-          v-model="formatDuration"
+          v-if="treatment.mode === 'auto'"
           class="mt-0 mb-7"
           icon="stopwatch"
           input-width="100%"
           :label="$t('fields.duration')"
-          placeholder="15 minutos"
           readonly
+          :value="formatDuration"
         />
-      </div>
-      <div class="column is-4 has-gap-y-4">
         <ATreatmentConfigurationField
-          v-model="formatPressure"
           class="mb-7"
           icon="weight-hanging"
           input-width="100%"
           :label="$t('fields.pressure')"
           :placeholder="$t('fields.pressure')"
           readonly
+          :value="formatPressure"
         />
-      </div>
-      <div class="column is-4 has-gap-y-4">
         <ATreatmentConfigurationField
           icon="thermometer-quarter"
           input-width="100%"
           :label="$t('fields.temperature')"
           :placeholder="$t('fields.temperature')"
           readonly
+          :value="formatTemperature"
         />
       </div>
-    </div>
-    <div class="columns">
+
       <div class="column is-4">
         <div class="has-background-white p-6">
           <div class="is-flex is-justify-content-space-between is-text-h2 has-text-dark-blue">
@@ -151,8 +147,8 @@
           <div class="is-dashed-session mt-4 is-flex">
             <img
               alt=""
-              class="is-overlay"
-              src="@/assets/thermal3.png"
+              class="treatment-image"
+              :src="thermicImage"
             >
             <BButton
               class="is-round has-text-blue is-expand-button"
@@ -165,10 +161,17 @@
         </div>
       </div>
 
-      <div class="column has-gap-x-10">
+      <div class="column is-5">
         <div class="is-text-h4 has-text-dark-blue">{{$t('fields.observations')}}</div>
-        <div class="observations mt-2 is-text-p p-6">
+        <div class="observations mt-2 is-text-p">
           <span>{{ treatment.notes }}</span>
+          <BButton
+            v-if="treatment.notes"
+            class="has-text-white is-round is-observation-button"
+            icon-pack="fas"
+            icon-right="ellipsis-h"
+            type="is-orange"
+            @click="showObservationModal" />
         </div>
       </div>
     </div>
@@ -180,18 +183,18 @@
 </div>
 </template>
 
-<script src="./TreatmentDetails.ts" lang="ts"></script>
+<script src="./TreatmentDetails.ts" lang="ts" ></script>
 
 <style lang="scss">
 .is-dashed-session {
   position: relative;
   background: none;
   border-color: lightgray;
-  // border-style: dashed;
+  border-style: dashed;
   border-width: 2px;
   border-radius: 5px;
-  width: 460px;
-  height: 290px;
+  height: 170px;
+  overflow: hidden;
 }
 
 .observations {
@@ -223,8 +226,8 @@
   bottom: 0.8rem;
   right: 0.8rem;
 }
-.is-overlay {
-  height: 100%;
+
+.treatment-image {
   width: 100%;
 }
 </style>

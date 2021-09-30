@@ -159,6 +159,12 @@
     }
   },
 
+  "temperatures": {
+    "low": "Baja",
+    "medium": "Media",
+    "high": "Alta"
+  },
+
   "fields": {
     "phone": "Teléfono",
     "email": "Correo",

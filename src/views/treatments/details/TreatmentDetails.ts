@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
+import AModalObservations from 'adamo-components/src/components/modals/observations-modal/AModalObservations.vue'
 import AModalThermographicImage from 'adamo-components/src/components/modals/thermographic-image-modal/AModalThermographicImage.vue'
 import moment from 'moment'
 
@@ -5,6 +7,7 @@ import { Session, Treatment } from 'adamo-components'
 import { Component, Vue, Watch } from 'vue-property-decorator'
 import { namespace } from 'vuex-class'
 import { TranslateResult } from 'vue-i18n'
+import { getEstimateFormat } from '@/utils/estimateUtils'
 
 const treatmentsStore = namespace('treatments')
 
@@ -38,9 +41,8 @@ export default class TreatmentDetails extends Vue {
   }
 
   get formatDuration (): string {
-    return this.treatment
-      ? `${this.treatment.heating_duration} ${this.$i18n.t('time.minutes')}`
-      : ''
+    const { hours, minutes, seconds } = getEstimateFormat(this.treatment?.points!, this.treatment?.n_cycles!)
+    return `${hours !== '00' ? hours + ':' : ''}${minutes}:${seconds}`
   }
 
   get formattedSessionDate (): string {
@@ -48,8 +50,8 @@ export default class TreatmentDetails extends Vue {
   }
 
   get formatPressure (): string {
-    return this.sessionSelected?.pressure
-      ? `${this.sessionSelected.pressure} P`
+    return this.treatment?.points?.[0]
+      ? `${this.treatment.points[0].pressure} P`
       : ''
   }
 
@@ -57,6 +59,37 @@ export default class TreatmentDetails extends Vue {
     return this.sessionSelected?.session_number
       ? this.sessionSelected.session_number
       : ''
+  }
+
+  get formatTemperature () {
+    switch (this.treatment?.temperature) {
+      case 0: return this.$t('temperatures.low')
+      case 1: return this.$t('temperatures.medium')
+      case 2: return this.$t('temperatures.high')
+    }
+    return ''
+  }
+
+  get getInjury () {
+    return this.treatment?.injury === 'True'
+      ? `${this.treatment?.injury_kind} - ${this.treatment?.injury_cause}`
+      : this.$t('noInjury')
+  }
+
+  get thermicImage (): string {
+    const currentSession = this.treatment?.sessions[this.session - 1]
+    return currentSession
+      ? `data:image/png;base64,${this.treatment?.sessions[this.session - 1].image_thermic}`
+      : ''
+  }
+
+  showObservationModal (): void {
+    this.$modal({
+      component: AModalObservations,
+      props: {
+        observations: this.treatment!.notes
+      }
+    })
   }
 
   async created (): Promise<void> {
@@ -84,7 +117,7 @@ export default class TreatmentDetails extends Vue {
       component: AModalThermographicImage,
       props: {
         treatment: this.treatment,
-        session: this.session
+        currentSession: this.session
       }
     })
   }
