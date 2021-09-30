@@ -2,8 +2,6 @@ import { User } from 'adamo-components'
 import { Component, Vue } from 'vue-property-decorator'
 import { namespace } from 'vuex-class'
 
-import AModalRecoverPass from 'adamo-components/src/components/modals/recover-pass-modal/AModalRecoverPass.vue'
-
 const auth = namespace('auth')
 @Component
 export default class Login extends Vue {
@@ -23,11 +21,14 @@ export default class Login extends Vue {
    * Estado de carga del formulario de inicio de sesión
    */
   loading = false
+  loadingPage = false
 
   /**
    * Mensaje de error que se muestra si falla el inicio de sesión
    */
   errorMessage = ''
+
+  recoverModal = false
 
   /**
    * Deternima si puede iniciar sesión dependiendo en si colocó usuario y contraseña
@@ -41,6 +42,7 @@ export default class Login extends Vue {
    * @param user - Datos del email y password del usuario a iniciar sesión
    */
   @auth.Action action_login!: (user: unknown) => Promise<User>
+  @auth.Action action_recoverPass!: (email: string) => Promise<void>
 
   /**
    * Función de login para ser llamada desde el template
@@ -65,9 +67,18 @@ export default class Login extends Vue {
     }
   }
 
-  recover (): void {
-    this.$modal({
-      component: AModalRecoverPass
-    })
+  async recoverPass (email: string) {
+    try {
+      this.recoverModal = false
+      this.loadingPage = true
+      await this.action_recoverPass(email)
+      this.$notify.success('Se ha enviado un correo de recuperación')
+    }
+    catch {
+      this.$notify.error('Hubo un problema intentando enviar el correo de recuperación')
+    }
+    finally {
+      this.loadingPage = false
+    }
   }
 }

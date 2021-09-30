@@ -30,6 +30,20 @@ export default class UserPass extends Vue {
   }
 
   @auth.Action action_updatePassword!: (user: unknown) => Promise<User>
+  @auth.Action action_verifyPasswordToken!: (token: string) => Promise<boolean>
+
+  async created () {
+    try {
+      const isTokenValid = await this.action_verifyPasswordToken(this.$route.params.token)
+
+      if (!isTokenValid) {
+        this.$router.push({ name: 'login' })
+      }
+    }
+    catch {
+      this.$router.push({ name: 'login' })
+    }
+  }
 
   async register (): Promise<void> {
     try {

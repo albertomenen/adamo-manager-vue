@@ -2018,7 +2018,7 @@ acorn@^7.1.0, acorn@^7.1.1, acorn@^7.4.0:
 
 "adamo-components@git+ssh://git@gitlab.com:squadmakers/adamo/adamo-components.git#develop":
   version "0.0.1"
-  resolved "git+ssh://git@gitlab.com:squadmakers/adamo/adamo-components.git#147f4ebbf1aa5e30b5b84125f69af6cb2ec53fcc"
+  resolved "git+ssh://git@gitlab.com:squadmakers/adamo/adamo-components.git#3c78c6fa2ba5155079e30aa0e0cf7c946f77d6c7"
   dependencies:
     kalendar-vue "^2.1.1"
     moment "^2.29.1"

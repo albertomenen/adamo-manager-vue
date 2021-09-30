@@ -68,17 +68,6 @@ export default class FormDeviceDetail extends Vue {
     }
   }
 
-  @Watch('getDeviceEditContext')
-  onChangeEditContext (context: boolean): void {
-    if (context) {
-      this.getGroups()
-    }
-    else {
-      this.groupSelected = null
-      this.locationSelected = null
-    }
-  }
-
   @Watch('groupSelected')
   onChangeGroupSelected (group: Group): void {
     if (group) {

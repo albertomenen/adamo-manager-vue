@@ -4,6 +4,7 @@ import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
 import { namespace } from 'vuex-class'
 
 const deviceStore = namespace('devices')
+const groupsStore = namespace('groups')
 
 @Component
 export default class FormDeviceInfo extends Vue {
@@ -32,9 +33,8 @@ export default class FormDeviceInfo extends Vue {
     type: Array as () => PropType<Group>,
     default: () => []
   })
-  groups!: Group[]
-
   @deviceStore.Action action_getStations!: ({ groupId, locationId }) => Promise<ApiListResponse<StationList>>
+  @groupsStore.Getter getGroups
 
   async getStations (): Promise<void> {
     try {

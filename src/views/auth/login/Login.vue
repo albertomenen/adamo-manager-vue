@@ -64,7 +64,7 @@
                 {{$t('login.forget')}}
                 <span
                   class="has-text-blue is-underlined"
-                  @click="recover"
+                  @click="recoverModal = true"
                 >
                   {{$t('login.recover')}}
                 </span>
@@ -74,6 +74,13 @@
         </div>
       </div>
     </div>
+    <AModalRecoverPass
+      :show-modal="recoverModal"
+      @submit="recoverPass" />
+    <BLoading
+      :active="loadingPage"
+      is-full-page
+    />
   </div>
 </section>
 </template>

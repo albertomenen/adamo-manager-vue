@@ -14,7 +14,7 @@
       rounded
     >
       <option
-        v-for="group in groups"
+        v-for="group in getGroups"
         :key="group.id_group"
         :value="group"
       >
