@@ -180,7 +180,7 @@
 </div>
 </template>
 
-<script src="./TreatmentDetails.ts" lang="ts" />
+<script src="./TreatmentDetails.ts" lang="ts"></script>
 
 <style lang="scss">
 .is-dashed-session {

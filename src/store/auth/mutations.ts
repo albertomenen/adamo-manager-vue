@@ -1,10 +1,10 @@
-import { User } from 'adamo-components'
+import { AuthUser } from 'adamo-components'
 import { MutationTree } from 'vuex'
 import { AuthStateInterface } from './state'
 
 const mutation: MutationTree<AuthStateInterface> = {
 
-  SET_AUTHENTICATED_USER (state, user: User) {
+  SET_AUTHENTICATED_USER (state, user: AuthUser) {
     localStorage.user = JSON.stringify(user)
     state.authenticatedUser = user
   },

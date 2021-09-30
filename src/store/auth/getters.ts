@@ -20,7 +20,7 @@ const getters: GetterTree<AuthStateInterface, StateInterface> = {
   },
 
   hasPermission: (state) => (permission: string) => {
-    return state.authenticatedUser.role![permission] === true
+    return state.authenticatedUser!.role![permission] === true
   }
 }
 
