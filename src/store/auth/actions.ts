@@ -29,6 +29,11 @@ const actions: ActionTree<AuthStateInterface, StateInterface> = {
   async action_updatePassword (_, { password, token }) {
     return axiosInstance.put(`/user_pass/${token}`, { password })
   },
+
+  async action_verifyPasswordToken (_, token) {
+    return axiosInstance.get(`/user_pass/${token}`)
+  },
+
   async action_recoverPass (_, email) {
     return axiosInstance.get(`/recover_pass?email=${email}`)
   },
