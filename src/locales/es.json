@@ -163,6 +163,7 @@
     "phone": "Teléfono",
     "email": "Correo",
     "password": "Contraseña",
+    "passwordConfirm": "Confirmar Contraseña",
     "status": "Estado",
     "information": "Información",
     "image": "Imágen|Imágenes",

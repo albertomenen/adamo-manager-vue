@@ -13,55 +13,16 @@
     </div>
   </div>
 
-  <div class="mt-7 is-flex is-justify-content-center">
-    <img
-      alt=""
-      class="is-round img-user has-background-white"
-      height="100"
-      src="@/assets/user.png"
-      style="z-index: 10;"
-      width="100"
-    >
-    <BUpload
-      rounded
-      style="z-index: 20;">
-      <BIcon
-        class="file-icon"
-        icon="camera"
-        pack="fas"
-        size="is-small"
-
-        type="is-dark-blue"
-      />
-    </BUpload>
-  </div>
-
   <AformUserProfile
     class="mb-8"
-    style="margin-top: -50px;"
     :user="user"
     @save="saveProfile"
+  />
+  <BLoading
+    :active="isLoading"
+    is-full-page
   />
 </div>
 </template>
 
 <script src="./Profile.ts" lang="ts"></script>
-
-<style lang="scss">
-.img-user {
-  max-height: 100px;
-  max-width: 100px;
-}
-.upload.control {
-  height: 30px;
-  width: 30px;
-  top: 70px;
-  right: 20px;
-  background: white;
-  align-items: center;
-
-  .icon.file-icon {
-    margin-left: 7px;
-  }
-}
-</style>

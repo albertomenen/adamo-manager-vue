@@ -15,7 +15,7 @@
       </div>
       <div class="column login-column-right max-height">
         <div class="columns full-height is-centered">
-          <div class="column is-elevated is-vcentered">
+          <div class="column is-elevated is-vcentered is-flex is-justify-content-center">
             <div class="px-16 py-20 is-login-card has-shadow">
               <div class="full-width has-text-centered is-login-title has-text-medium-blue">
                 {{$t('login.signIn')}}

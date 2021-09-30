@@ -25,7 +25,6 @@ export default class ModalUserForm extends Vue {
     user_name: '',
     phone: '',
     email: '',
-    password: '',
     country: '',
     name: '',
     last_name: '',

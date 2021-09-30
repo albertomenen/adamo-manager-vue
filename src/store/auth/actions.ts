@@ -4,6 +4,7 @@ import { StateInterface } from 'src/store/index'
 import { AuthStateInterface } from './state'
 import { axiosInstance } from '@/utils/axios'
 import { AuthResponse } from 'adamo-components'
+import { formatRouteWithUser } from '@/utils/urlByRole'
 
 const actions: ActionTree<AuthStateInterface, StateInterface> = {
 
@@ -23,6 +24,17 @@ const actions: ActionTree<AuthStateInterface, StateInterface> = {
     commit('SET_AUTHENTICATED_USER', user)
 
     return data
+  },
+
+  async action_updatePassword (_, { password, token }) {
+    return axiosInstance.put(`/user_pass/${token}`, { password })
+  },
+
+  async action_updateProfile ({ commit, getters }, profileData) {
+    const user = getters['getUser']
+    const { data } = await axiosInstance.put(formatRouteWithUser(user.role.role_code, user.id_user, user.id_group, user.id_location), profileData)
+
+    commit('SET_AUTHENTICATED_USER', data)
   },
 
   /**

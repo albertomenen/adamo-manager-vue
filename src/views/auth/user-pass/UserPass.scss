@@ -1,4 +1,4 @@
-.login-background {
+.background {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -8,7 +8,7 @@
   z-index: 10;
 }
 
-.is-login-card {
+.is-password-card {
   background: rgba(246, 246, 246, 0.1);
   border: 2px solid #FFFFFF;
   backdrop-filter: blur(1px);
@@ -17,7 +17,7 @@
   width: 512px;
 }
 
-.is-login-title {
+.is-password-title {
   font-family: Comfortaa;
   font-style: normal;
   font-weight: bold;
@@ -25,7 +25,7 @@
   line-height: 54px;
 }
 
-.is-login-logo {
+.is-logo {
   height: 50px;
   width: 170px;
 }

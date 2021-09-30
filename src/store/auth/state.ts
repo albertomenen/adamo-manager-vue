@@ -1,7 +1,7 @@
-import { User } from 'adamo-components'
+import { AuthUser } from 'adamo-components'
 
 export interface AuthStateInterface {
-  authenticatedUser: User | null
+  authenticatedUser: AuthUser
   token: string | null
   reToken: string | null
 }

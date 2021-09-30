@@ -13,6 +13,11 @@ const authRoutes: Array<RouteConfig> = [
         path: 'login',
         name: 'login',
         component: () => import('@/views/auth/login/Login.vue')
+      },
+      {
+        path: 'user_pass/:token',
+        name: 'userPass',
+        component: () => import('@/views/auth/user-pass/UserPass.vue')
       }
     ]
   }

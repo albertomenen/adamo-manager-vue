@@ -21,6 +21,7 @@
         <BMenu class="is-custom-mobile mt-10">
           <BMenuList>
             <BMenuItem
+              v-if="hasPermission('manage_group')"
               :active="routeName.includes('groups') || routeName.includes('group')"
               icon="hospital"
               icon-pack="fas"
@@ -30,6 +31,7 @@
               :to="{ name: 'groupsList' }"
             />
             <BMenuItem
+              v-if="hasAccessToDataTab"
               :active="routeName.includes('data')"
               icon="notes-medical"
               icon-pack="fas"
@@ -39,6 +41,7 @@
               :to="{ name: 'dataUsers' }"
             />
             <BMenuItem
+              v-if="hasPermission('manage_patient')"
               :active="routeName.includes('patients') || routeName.includes('patient') || routeName.includes('treatment')"
               icon="hospital-user"
               icon-pack="fas"

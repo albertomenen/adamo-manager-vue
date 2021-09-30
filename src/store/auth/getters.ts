@@ -17,6 +17,10 @@ const getters: GetterTree<AuthStateInterface, StateInterface> = {
 
   getLocationId (state) {
     return state.authenticatedUser?.id_location
+  },
+
+  hasPermission: (state) => (permission: string) => {
+    return state.authenticatedUser.role![permission] === true
   }
 }
 
