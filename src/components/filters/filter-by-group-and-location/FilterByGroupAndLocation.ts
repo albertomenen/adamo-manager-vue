@@ -9,7 +9,7 @@ const groupsStore = namespace('groups')
     FilterBase: () => import('@/components/filters/filter-base/FilterBase.vue')
   }
 })
-export default class FilterGroups extends Vue {
+export default class FilterByGroupAndLocation extends Vue {
   @Prop({
     type: String,
     default: ''

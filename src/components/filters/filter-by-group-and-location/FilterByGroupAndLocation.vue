@@ -10,15 +10,17 @@
         <div class="column">
           <BSelect
             expanded
-            placeholder="Grupo"
             rounded
             :value="group"
             @input="$emit('update:group', $event)"
           >
             <option
+              disabled
+              value="">{{$t('fields.group')}}</option>
+            <option
               v-for="groupOption in getGroups"
               :key="groupOption.id_group"
-              :value="groupOption.id_group">{{ groupOption.name_group }}</option>
+              :value="groupOption.id_group">{{ groupOption.group_name }}</option>
           </BSelect>
         </div>
         <div class="column">
@@ -30,9 +32,12 @@
             @input="$emit('update:location', $event)"
           >
             <option
+              disabled
+              value="">{{$t('fields.location')}}</option>
+            <option
               v-for="locationOption in locations"
               :key="locationOption.id_location"
-              :value="locationOption.id_location">{{ locationOption.name_location }}</option>
+              :value="locationOption.id_location">{{ locationOption.location_name }}</option>
           </BSelect>
         </div>
       </div>

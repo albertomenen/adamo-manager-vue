@@ -38,10 +38,10 @@ export default class DataList extends Vue {
   onFilterSearchChange = debounce((value) => this.swapFilterValue('name', 'contains', value), 300)
 
   @Watch('filterGroup')
-  onFilterGroupChange = debounce((value) => this.swapFilterValue('id_group', 'equals', value), 300)
+  onFilterGroupChange = (value) => this.swapFilterValue('id_group', 'equal', value)
 
   @Watch('filterLocation')
-  onFilterLocationChange = debounce((value) => this.swapFilterValue('id_location', 'equals', value), 300)
+  onFilterLocationChange = (value) => this.swapFilterValue('id_location', 'equal', value)
 
   created (): void {
     if (this.$route.name === 'dataDevices') {
@@ -52,6 +52,9 @@ export default class DataList extends Vue {
   @Watch('tab')
   onChangeTab (value: number): void {
     this.filterSearch = ''
+    this.filterLocation = ''
+    this.filterGroup = ''
+
     this.filtersObject = []
     switch (value) {
       case 0:
