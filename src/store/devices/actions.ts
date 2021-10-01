@@ -6,8 +6,13 @@ import { DeviceStateInterface } from './state'
 
 const actions: ActionTree<DeviceStateInterface, StateInterface> = {
 
-  async action_getDevices (_, params: ApiRequest): Promise<ApiListResponse<Device>> {
-    const { data } = await axiosInstance.get(`/${ApiRoutes.Device}`, { params })
+  async action_getDevices (_, { filters, ...params }: ApiRequest): Promise<ApiListResponse<Device>> {
+    const { data } = await axiosInstance.get(`/${ApiRoutes.Device}`, {
+      params: {
+        filters: JSON.stringify(filters),
+        ...params
+      }
+    })
 
     return data
   },

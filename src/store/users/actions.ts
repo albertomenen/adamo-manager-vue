@@ -7,8 +7,13 @@ import { UserStateInterface } from './state'
 
 const actions: ActionTree<UserStateInterface, StateInterface> = {
 
-  async action_getUsers (_, params: ApiRequest): Promise<ApiListResponse<User>> {
-    const { data } = await axiosInstance.get(`/users`, { params })
+  async action_getUsers (_, { filters, ...params }: ApiRequest): Promise<ApiListResponse<User>> {
+    const { data } = await axiosInstance.get(`/users`, {
+      params: {
+        filters: JSON.stringify(filters),
+        ...params
+      }
+    })
 
     return data
   },
