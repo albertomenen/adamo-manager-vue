@@ -11,8 +11,13 @@ const actions: ActionTree<GroupsStateInterface, StateInterface> = {
    * Obtener listado de grupos
    * @param params - Parametros de paginacion
    */
-  async action_getGroups (_, params: ApiRequest): Promise<GroupList> {
-    const { data } = await axiosInstance.get(`/${ApiRoutes.Group}`, { params })
+  async action_getGroups (_, { filters, ...params }: ApiRequest): Promise<GroupList> {
+    const { data } = await axiosInstance.get(`/${ApiRoutes.Group}`, {
+      params: {
+        filters: JSON.stringify(filters),
+        ...params
+      }
+    })
 
     return data
   },

@@ -2018,7 +2018,7 @@ acorn@^7.1.0, acorn@^7.1.1, acorn@^7.4.0:
 
 "adamo-components@git+ssh://git@gitlab.com:squadmakers/adamo/adamo-components.git#develop":
   version "0.0.1"
-  resolved "git+ssh://git@gitlab.com:squadmakers/adamo/adamo-components.git#3c78c6fa2ba5155079e30aa0e0cf7c946f77d6c7"
+  resolved "git+ssh://git@gitlab.com:squadmakers/adamo/adamo-components.git#23057ba3477b79de473c283a797a1da913ef3ab2"
   dependencies:
     kalendar-vue "^2.1.1"
     moment "^2.29.1"
@@ -3755,6 +3755,11 @@ deasync@^0.1.15:
   dependencies:
     bindings "^1.5.0"
     node-addon-api "^1.7.1"
+
+debounce@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/debounce/-/debounce-1.2.1.tgz#38881d8f4166a5c5848020c11827b834bcb3e0a5"
+  integrity sha512-XRRe6Glud4rd/ZGQfiV1ruXSfbvfJedlV9Y6zOlP+2K04vBYiJEte6stfFkCP03aMnY5tsipamumUjL14fofug==
 
 debug@2.6.9, debug@^2.2.0, debug@^2.3.3, debug@^2.6.8:
   version "2.6.9"

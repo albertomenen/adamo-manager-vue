@@ -17,13 +17,14 @@
       />
     </div>
   </div>
-  <SearchBar
+  <!-- No se puede filtrar pacientes por locacion o especialista, y en grupos solo te mostrará los de tu grupo -->
+  <!-- <SearchBar
     class="mb-6"
   >
     <template>
       <FilterPatients />
     </template>
-  </SearchBar>
+  </SearchBar> -->
   <ATablePatients
     id="table_patients"
     :data="patients"

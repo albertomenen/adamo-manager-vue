@@ -6,6 +6,8 @@
     icon-pack="fas"
     icon-right="search"
     :placeholder="$t('actions.search')"
+    :value="value"
+    @input="$emit('input', $event)"
   />
 </div>
 </template>

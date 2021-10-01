@@ -1,4 +1,4 @@
-import { ApiListResponse, ApiRequest, Device, DeviceCreate } from 'adamo-components'
+import { ApiListResponse, ApiRequest, Device, DeviceCreate, Filter } from 'adamo-components'
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
 import { namespace } from 'vuex-class'
 
@@ -14,6 +14,22 @@ const groupsStore = namespace('groups')
 })
 export default class TabsDevices extends Vue {
 
+  @Prop({
+    type: Array,
+    default: null
+  }) filters!: Filter[]
+
+  @Prop({
+    type: Number
+  }) tab
+
+  @Watch('filters', { deep: true })
+  onFiltersChange () {
+    if (this.filters.length && this.tab === 1) {
+      this.getDevices()
+    }
+  }
+
   devices: Device[] = []
 
   currentPage = 1
@@ -22,10 +38,7 @@ export default class TabsDevices extends Vue {
 
   totalPages = 0
 
-  @Prop({
-    type: Number
-  })
-  tab
+
 
   @devicesStore.Action action_getDevices!: (params?: ApiRequest) => Promise<ApiListResponse<Device>>
 
@@ -54,7 +67,8 @@ export default class TabsDevices extends Vue {
       const { data, pagination } = await this.action_getDevices({
         ...params,
         page: this.currentPage,
-        size: 7
+        size: 7,
+        filters: this.filters
       })
 
       this.devices = data

@@ -8,20 +8,24 @@
     >
       <div class="columns">
         <div class="column">
-          <BSelect
+          <AInput
             expanded
             placeholder="Ciudad"
             rounded
+            :value="city"
+            @input="$emit('update:city', $event)"
           >
-          </BSelect>
+          </AInput>
         </div>
         <div class="column">
-          <BSelect
+          <AInput
             expanded
             placeholder="Provincia"
             rounded
+            :value="town"
+            @input="$emit('update:town', $event)"
           >
-          </BSelect>
+          </AInput>
         </div>
       </div>
     </BDropdownItem>
@@ -29,4 +33,4 @@
 </FilterBase>
 </template>
 
-<script src="./FilterGroups.ts" lang="ts"></script>
+<script src="./FilterGroups.ts" lang="ts">

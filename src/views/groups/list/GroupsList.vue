@@ -18,10 +18,13 @@
     </div>
   </div>
   <SearchBar
-    class="mb-6"
-  >
+    v-model="filterSearch"
+    class="mb-6">
     <template>
-      <FilterGroups />
+      <FilterGroups
+        :city.sync="filterCity"
+        :town.sync="filterTown"
+      />
     </template>
   </SearchBar>
   <TableGroups

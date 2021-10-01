@@ -5,7 +5,16 @@
       <div class="is-text-h1 has-text-dark-blue">{{ $t('myDateBase') }}</div>
     </div>
   </div>
-  <div class="filtro"></div>
+  <SearchBar
+    v-model="filterSearch"
+    class="my-6">
+    <template>
+      <FilterByGroupAndLocation
+        :group.sync="filterGroup"
+        :location.sync="filterLocation"
+      />
+    </template>
+  </SearchBar>
   <BTabs
     v-model="tab"
     type="is-adamo-tab mt-4"
@@ -17,6 +26,7 @@
     >
       <TabsUsers
         class="mt-6"
+        :filters="filtersObject"
         :tab="tab"
         @loading="loadingPage = $event"
       />
@@ -28,6 +38,7 @@
     >
       <TabsDevices
         class="mt-6"
+        :filters="filtersObject"
         :tab="tab"
         @loading="loadingPage = $event"
       />

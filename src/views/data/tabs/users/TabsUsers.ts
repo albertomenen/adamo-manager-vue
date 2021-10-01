@@ -1,4 +1,4 @@
-import { ApiListResponse, ApiRequest, User } from 'adamo-components'
+import { ApiListResponse, ApiRequest, Filter, User } from 'adamo-components'
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
 import { namespace } from 'vuex-class'
 
@@ -15,6 +15,13 @@ const rolesStore = namespace('roles')
 })
 export default class TabsUsers extends Vue {
 
+  @Prop({
+    type: Array,
+    default: null
+  }) filters!: Filter[]
+
+  @Prop({ type: Number }) tab
+
   users: User[] = []
 
   currentPage = 1
@@ -23,7 +30,6 @@ export default class TabsUsers extends Vue {
 
   totalPages = 0
 
-  @Prop({ type: Number }) tab
 
   @usersStore.Action action_getUsers!: (params?: ApiRequest) => Promise<ApiListResponse<User>>
 
@@ -34,6 +40,13 @@ export default class TabsUsers extends Vue {
   @groupsStore.Getter getGroups
 
   @rolesStore.Getter getRoles
+
+  @Watch('filters', { deep: true })
+  onFiltersChange () {
+    if (this.filters.length && this.tab === 0) {
+      this.getUsers()
+    }
+  }
 
   created (): void {
     if (this.tab === 0) {
@@ -52,7 +65,8 @@ export default class TabsUsers extends Vue {
       const { data, pagination } = await this.action_getUsers({
         ...params,
         page: this.currentPage,
-        size: 6
+        size: 6,
+        filters: this.filters
       })
 
       this.users = data

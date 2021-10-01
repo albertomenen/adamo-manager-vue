@@ -1,7 +1,8 @@
-import { ApiListResponse, ApiRequest, Group, Location } from 'adamo-components'
-import { Component, Vue } from 'vue-property-decorator'
+import { ApiListResponse, ApiRequest, Group, Location, Filter } from 'adamo-components'
+import { Component, Vue, Watch } from 'vue-property-decorator'
 import { namespace } from 'vuex-class'
 import { FormsGroupLocation, GroupCreate } from '@/models/group.model'
+import { debounce } from 'debounce'
 
 import ModalGroupForm from '@/components/modals/modal-group-form/ModalGroupForm.vue'
 import AConfirmationModal from 'adamo-components/src/components/modals/confirmation-modal/AModalConfirmation.vue'
@@ -29,6 +30,28 @@ export default class GroupsList extends Vue {
 
   loadingPage = true
 
+  filtersObject: Filter<Group>[] = []
+
+  filterSearch = ''
+  filterTown = ''
+  filterCity = ''
+
+  swapFilterValue (field: keyof Group, value: any) {
+    const index = this.filtersObject.findIndex(element => element.field === field)
+    index !== -1 && this.filtersObject.splice(index, 1)
+    this.filtersObject.push({ field, op: 'contains', value })
+    this.getGroups()
+  }
+
+  @Watch('filterSearch')
+  onFilterSearchChange = debounce((value) => this.swapFilterValue('group_name', value), 300)
+
+  @Watch('filterTown')
+  onFilterTownChange = debounce((value) => this.swapFilterValue('town', value), 300)
+
+  @Watch('filterCity')
+  onFilterCityChange = debounce((value) => this.swapFilterValue('city', value), 300)
+
   @groupsStore.Action action_getGroups!: (params?: ApiRequest) => Promise<ApiListResponse<Group>>
 
   @groupsStore.Action action_createGroup!: (groupData: GroupCreate) => Promise<Group>
@@ -54,7 +77,8 @@ export default class GroupsList extends Vue {
       this.loadingGroups = true
       const { data, pagination } = await this.action_getGroups({
         page: this.currentPage,
-        size: 7
+        size: 7,
+        filters: this.filtersObject
       })
 
       this.groups = data
