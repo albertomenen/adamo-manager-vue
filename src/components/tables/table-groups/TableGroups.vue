@@ -1,7 +1,7 @@
 <template>
 <BTable
   v-bind="$attrs"
-  class="is-adamo-table has-left-table-padding"
+  class="is-adamo-table"
   :data="data"
   detail-key="id_group"
   detailed
@@ -62,8 +62,10 @@
   </BTableColumn>
   <template #detail="props">
     <TableLocations
+      v-if="props.row.locations.length"
       :data="props.row.locations"
     />
+    <div v-else></div>
   </template>
   <template #empty>
     <ATableEmpty />
@@ -74,7 +76,35 @@
 <script src="./TableGroups.ts" lang="ts"></script>
 
 <style lang="scss">
-.is-adamo-table tr.detail td:first-child {
-  padding-left: 10px;
+.is-table-locations {
+  padding-left: 0px;
 }
+
+.is-adamo-table .detail {
+  padding: 0 !important;
+
+  td:first-child {
+    background-color: whitesmoke;
+  }
+
+  .detail-container {
+    padding: 0 0 0 35px !important;
+
+    .is-table-locations tbody {
+      tr {
+        td {
+          height: 40px;
+          background-color: whitesmoke;
+        }
+      }
+
+      tr:hover td {
+        background: rgba(0, 158, 226, 0.1);
+        color: #0C518C;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
 </style>
