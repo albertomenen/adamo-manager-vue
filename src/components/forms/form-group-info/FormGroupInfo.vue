@@ -29,27 +29,39 @@
     icon-pack="fas"
     :placeholder="$t('fields.address')"
   />
-  <AInput
-    v-model="formData.phone"
-    class="column is-full"
-    icon="phone-alt"
-    icon-pack="fas"
-    :placeholder="$t('fields.phone')"
-  />
-  <AInput
-    v-model="formData.email"
-    class="column is-full"
-    icon="envelope"
-    icon-pack="far"
-    :placeholder="$t('fields.email')"
-  />
-  <AInput
-    v-model="formData.contact_name"
-    class="column is-full"
-    icon="user"
-    icon-pack="fas"
-    :placeholder="$t('fields.contactPerson')"
-  />
+  <BField class="column is-full my-0">
+    <BInput
+      v-model="formData.phone"
+      icon="phone-alt"
+      icon-pack="fas"
+      pattern="^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$"
+      :placeholder="`${$t('fields.phone')}. +(123) - 456-78-90`"
+      rounded
+      type="text"
+      validation-message="Introduzca un número de teléfono correcto. i.e. +(123) - 456-78-90"
+    />
+  </BField>
+  <BField class="column is-full my-0">
+    <BInput
+      v-model="formData.email"
+      icon="envelope"
+      icon-pack="far"
+      :placeholder="$t('fields.email')"
+      rounded
+      type="email"
+    />
+  </BField>
+  <BField class="column is-full my-0">
+    <BInput
+      v-model="formData.contact_name"
+      icon="user"
+      icon-pack="fas"
+      pattern="^[a-zA-Z\s]*$"
+      :placeholder="$t('fields.contactPerson')"
+      rounded
+      validation-message="Use letras y espacios"
+    />
+  </BField>
   <BUpload
     accept="image/*"
     class="column"
