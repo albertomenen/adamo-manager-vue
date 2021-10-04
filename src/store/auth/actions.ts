@@ -12,15 +12,14 @@ const actions: ActionTree<AuthStateInterface, StateInterface> = {
    * Iniciar sesión
    * @param user - Datos de login del usuario
    */
-  async action_login ({ commit }, userCredentials): Promise<AuthResponse> {
+  async action_login ({ commit }, { userCredentials, persistent }): Promise<AuthResponse> {
     const { data } = await axiosInstance.post<AuthResponse>('/login', userCredentials)
 
     const { Authorization, user } = data
 
     axiosInstance.defaults.headers.common['Authorization'] = Authorization
 
-    commit('SET_TOKEN', Authorization)
-    // commit('SET_REFRESH_TOKEN', refreshToken)
+    commit('SET_TOKEN', { token: Authorization, persistent })
     commit('SET_AUTHENTICATED_USER', user)
 
     return data

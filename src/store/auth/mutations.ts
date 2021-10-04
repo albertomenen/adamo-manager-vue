@@ -9,10 +9,13 @@ const mutation: MutationTree<AuthStateInterface> = {
     state.authenticatedUser = user
   },
 
-  SET_TOKEN (state, token: string) {
-    localStorage.token = token
+  SET_TOKEN (state, { token, persistent }) {
+    if (persistent) {
+      localStorage.token = token
+    }
     state.token = token
   },
+
 
   SET_REFRESH_TOKEN (state, reToken: string) {
     localStorage.reToken = reToken

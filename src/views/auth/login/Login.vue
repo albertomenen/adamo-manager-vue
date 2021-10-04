@@ -45,7 +45,7 @@
                 />
               </BField>
               <BField class="has-text-title has-text-centered pb-8 is-text-p">
-                <BCheckbox>{{$t('login.remember')}}</BCheckbox>
+                <BCheckbox v-model="rememberUser">{{$t('login.remember')}}</BCheckbox>
               </BField>
               <BField class="has-text-centered pb-4">
                 <BButton
@@ -85,5 +85,5 @@
 </section>
 </template>
 
-<script lang="ts" src="./Login.ts" />
+<script lang="ts" src="./Login.ts" > </script>
 <style lang="scss" src="./Login.scss" />

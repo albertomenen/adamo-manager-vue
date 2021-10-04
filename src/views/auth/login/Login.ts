@@ -29,6 +29,7 @@ export default class Login extends Vue {
   errorMessage = ''
 
   recoverModal = false
+  rememberUser = false
 
   /**
    * Deternima si puede iniciar sesión dependiendo en si colocó usuario y contraseña
@@ -52,9 +53,12 @@ export default class Login extends Vue {
       this.loading = true
       this.errorMessage = ''
       await this.action_login({
-        email: this.email,
-        password: this.password,
-        source: 'manager'
+        userCredentials: {
+          email: this.email,
+          password: this.password,
+          source: 'manager'
+        },
+        persistent: this.rememberUser
       })
 
       this.$router.push({ name: 'groupsList' })
