@@ -62,14 +62,19 @@
         :placeholder="$t('fields.address')"
         :readonly="!getGroupEditContext"
       />
-      <AInput
-        v-model="group.phone"
-        class="column is-half"
-        icon="phone-alt"
-        icon-pack="fas"
-        :placeholder="$t('fields.phone')"
-        :readonly="!getGroupEditContext"
-      />
+      <BField class="column is-half my-0">
+        <BInput
+          v-model="group.phone"
+          icon="phone-alt"
+          icon-pack="fas"
+          pattern="^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$"
+          :placeholder="`${$t('fields.phone')}. +(123) - 456-78-90`"
+          :readonly="!getGroupEditContext"
+          rounded
+          type="text"
+          validation-message="Introduzca un número de teléfono correcto. i.e. +(123) - 456-78-90"
+        />
+      </BField>
       <AInput
         v-model="group.email"
         class="column is-half"
