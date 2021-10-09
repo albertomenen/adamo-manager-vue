@@ -76,7 +76,7 @@
         icon="envelope"
         icon-pack="far"
         :placeholder="$t('fields.email')"
-        :readonly="!getGroupEditContext"
+        readonly
       />
       <AInput
         v-model="group.contact_name"
