@@ -21,7 +21,9 @@
     step="2"
   >
     <FormLocationInfo
+      :fill-with-group="fillWithGroup"
       :form-data="formLocation"
+      @update-sync="$emit('update:fill-with-group', $event)"
     />
   </BStepItem>
   <template #navigation="{previous, next}">
@@ -38,6 +40,7 @@
       </BButton>
       <BButton
         class="has-text-white"
+        :disabled="!isFormValid"
         icon-pack="fas"
         :icon-right="activeStep !== 1 ? 'arrow-right' : ''"
         rounded

@@ -37,6 +37,8 @@ export default class ModalGroupForm extends Vue {
     email: ''
   }
 
+  fillWithGroup = false
+
   handleSubmit (): void {
     this.$emit('cancel')
     this.$emit('ok', {
@@ -45,7 +47,7 @@ export default class ModalGroupForm extends Vue {
     })
   }
 
-  @Watch('formLocation.fill_with_group')
+  @Watch('fillWithGroup')
   onChange (value: boolean): void {
     if (value) {
       const { address, country, city, town, phone, contact_name, email } = this.formGroup

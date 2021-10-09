@@ -62,27 +62,43 @@
       validation-message="Use letras y espacios"
     />
   </BField>
-  <BUpload
-    accept="image/*"
-    class="column"
-    drag-drop
-    expanded
-    native
-    @input="handleImage"
-  >
-    <section class="section">
-      <div class="content has-text-centered">
-        <p>{{ $t('fields.upload') }}</p>
-        <p>
-          <BIcon
-            icon="file-upload"
-            pack="fas"
-            size="is-medium"
-          />
-        </p>
+  <div
+    class="is-flex is-justify-content-center is-align-items-center"
+    style="margin: 0 auto;">
+    <BUpload
+      accept="image/*"
+      drag-drop
+      expanded
+      native
+      @input="handleImage"
+    >
+      <section class="section">
+        <div class="content has-text-centered">
+          <p>{{ $t('fields.upload') }}</p>
+          <p>
+            <BIcon
+              icon="file-upload"
+              pack="fas"
+              size="is-medium"
+            />
+          </p>
+        </div>
+      </section>
+    </BUpload>
+    <div
+      class="ml-8"
+      style="height: 96px; width: 96px;">
+      <div
+        class="is-round has-background-gray"
+        style="overflow: hidden; height: 96px; width: 96px;">
+        <img
+          alt=""
+          :src="formData.logo || require('@/assets/user.png')"
+          style="height: 96px; width: 96px;"
+        >
       </div>
-    </section>
-  </BUpload>
+    </div>
+  </div>
 </div>
 </template>
 

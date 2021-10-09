@@ -27,6 +27,7 @@
         <div class="columns">
           <div class="column">
             <FormGroupSteps
+              :fill-with-group.sync="fillWithGroup"
               :form-group="formGroup"
               :form-location="formLocation"
               @submit="handleSubmit"

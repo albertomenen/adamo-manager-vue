@@ -6,8 +6,9 @@
       class="column has-text-centered"
     >
       <BSwitch
-        v-model="formData.fill_with_group"
         :left-label="true"
+        :value="fillWithGroup"
+        @input="$emit('update-sync', $event)"
       >
         {{ $t('sameOfGroup') }}
       </BSwitch>
