@@ -1,16 +1,14 @@
 import { User } from 'adamo-components'
 import { PropType } from 'vue'
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Prop, Vue } from 'vue-property-decorator'
 
-@Component({
-  props: {
-    data: {
-      type: Array as () => PropType<User[]>,
-      default: () => []
-    }
-  }
-})
+@Component
 export default class TableUsers extends Vue {
+
+  @Prop({
+    type: Array as () => PropType<User[]>,
+    default: () => []
+  }) data!: User
 
   showUser (user: User): void {
     this.$emit('user:show', user)

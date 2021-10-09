@@ -48,8 +48,7 @@
   <BTableColumn
     v-slot="props"
     centered>
-    <ATableMenu
-      @click.native.stop>
+    <ATableMenu>
       <template>
         <ADropdownItem
           icon="eye"

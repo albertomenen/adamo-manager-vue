@@ -1,16 +1,13 @@
 import { Device } from 'adamo-components'
 import { PropType } from 'vue'
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Prop, Vue } from 'vue-property-decorator'
 
-@Component({
-  props: {
-    data: {
-      type: Array as () => PropType<Device[]>,
-      default: () => []
-    }
-  }
-})
+@Component
 export default class TableDevices extends Vue {
+  @Prop({
+    type: Array as () => PropType<Device[]>,
+    default: () => []
+  }) data!: Device[]
 
   showDevice (device: Device): void {
     this.$emit('device:show', device.id_device)

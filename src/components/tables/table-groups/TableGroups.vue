@@ -42,7 +42,7 @@
     v-slot="props"
     centered
   >
-    <ATableMenu @click.native.stop>
+    <ATableMenu>
       <ADropdownItem
         icon="eye"
         :label="$t('actions.see')"
