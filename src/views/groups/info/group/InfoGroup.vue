@@ -3,6 +3,7 @@
   <div class="is-adamo-card-dark mt-4">
     <div class="is-flex is-justify-content-space-between is-align-items-center mb-4">
       <div class="is-text-h2 has-text-dark-blue py-2">{{$t('generalInfo')}}</div>
+
       <BButton
         v-if="!getGroupEditContext"
         class="has-text-dark-blue"
@@ -11,6 +12,34 @@
         type="is-ghost"
         @click="setGroupEditContext(true)"
       />
+    </div>
+    <div
+      class="my-6"
+      style="position: relative; max-height: 128px; max-width: 128px; margin: 0 auto;">
+      <div
+        class="is-round has-background-gray"
+        style="overflow: hidden; max-height: 128px; max-width: 128px;">
+        <img
+          alt=""
+          :src="getGroupLogo"
+          style="height: 128px; width: 128px;"
+        >
+      </div>
+      <BUpload
+        v-if="getGroupEditContext"
+        accept="image/*"
+        native
+        rounded
+        style="z-index: 20; position: absolute; bottom: -5px; right: -5px; cursor: pointer"
+        @input="handleImage">
+        <BIcon
+          class="file-icon is-round has-background-white"
+          icon="camera"
+          pack="fas"
+          size="is-large"
+          type="is-dark-blue"
+        />
+      </BUpload>
     </div>
     <div class="columns is-multiline">
       <AInput
@@ -57,31 +86,6 @@
         :placeholder="$t('fields.contactPerson')"
         :readonly="!getGroupEditContext"
       />
-      <BField
-        v-if="getGroupEditContext"
-        class="column is-half"
-      >
-        <BUpload
-          accept="image/*"
-          drag-drop
-          expanded
-          native
-          @input="handleImage"
-        >
-          <section class="section">
-            <div class="content has-text-centered">
-              <p>{{ $t('fields.upload') }}</p>
-              <p>
-                <BIcon
-                  icon="file-upload"
-                  pack="fas"
-                  size="is-medium"
-                />
-              </p>
-            </div>
-          </section>
-        </BUpload>
-      </BField>
     </div>
   </div>
 </div>
