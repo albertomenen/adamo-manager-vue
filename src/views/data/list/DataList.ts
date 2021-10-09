@@ -35,7 +35,7 @@ export default class DataList extends Vue {
   }
 
   @Watch('filterSearch')
-  onFilterSearchChange = debounce((value) => this.swapFilterValue('name', 'contains', value), 300)
+  onFilterSearchChange = debounce((value) => this.swapFilterValue('name', 'contains', value), 500)
 
   @Watch('filterGroup')
   onFilterGroupChange = (value) => this.swapFilterValue('id_group', 'equal', value)

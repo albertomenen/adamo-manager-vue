@@ -43,7 +43,7 @@ export default class TabsUsers extends Vue {
 
   @Watch('filters', { deep: true })
   onFiltersChange () {
-    if (this.filters.length && this.tab === 0) {
+    if (this.tab === 0) {
       this.getUsers()
     }
   }

@@ -25,7 +25,7 @@ export default class TabsDevices extends Vue {
 
   @Watch('filters', { deep: true })
   onFiltersChange () {
-    if (this.filters.length && this.tab === 1) {
+    if (this.tab === 1) {
       this.getDevices()
     }
   }

@@ -44,13 +44,13 @@ export default class GroupsList extends Vue {
   }
 
   @Watch('filterSearch')
-  onFilterSearchChange = debounce((value) => this.swapFilterValue('group_name', value), 300)
+  onFilterSearchChange = debounce((value) => this.swapFilterValue('group_name', value), 500)
 
   @Watch('filterTown')
-  onFilterTownChange = debounce((value) => this.swapFilterValue('town', value), 300)
+  onFilterTownChange = debounce((value) => this.swapFilterValue('town', value), 500)
 
   @Watch('filterCity')
-  onFilterCityChange = debounce((value) => this.swapFilterValue('city', value), 300)
+  onFilterCityChange = debounce((value) => this.swapFilterValue('city', value), 500)
 
   @groupsStore.Action action_getGroups!: (params?: ApiRequest) => Promise<ApiListResponse<Group>>
 
