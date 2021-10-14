@@ -1,10 +1,10 @@
 all: build compile run
 
 build:
-	docker build -t adamo-vue-manager .
+	docker build --no-cache -t adamo-vue-manager .
 
 compile:
-	docker run --rm -d -v $(shell pwd):/usr/app adamo-vue-manager yarn build
+	docker run --rm -v $(shell pwd):/usr/app adamo-vue-manager yarn install && yarn build
 
 run_dev:
 	docker run --rm -d --name vue-manager -p 8080:8080 -v $(shell pwd):/usr/app adamo-vue-manager yarn serve

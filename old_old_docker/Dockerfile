@@ -1,12 +1,13 @@
-FROM node:16-alpine as build
+FROM node
 
 WORKDIR /usr/app
-USER 0
-COPY package*.json ./
+COPY ["package.json", "package-lock.json*", "./"]
 
-RUN apk update
-RUN apk add git
-RUN apk add openssh
+RUN apt-get update && \
+    apt-get install -y \
+        git \
+        openssh-server \
+        default-libmysqlclient-dev
 
 # Authorize SSH Host
 RUN mkdir -p /root/.ssh && \
@@ -21,13 +22,9 @@ RUN chmod 600 /root/.ssh/id_rsa && \
 
 RUN  echo "    IdentityFile ~/.ssh/id_rsa" >> /etc/ssh/ssh_config
 
-RUN yarn install -g --network-timeout 1000000
+RUN npm install http-server -g
+#RUN yarn install
 
-COPY . .
-RUN yarn build
 
-FROM nginx:stable-alpine
-COPY --from=build /usr/app/dist /bin/www
-COPY nginx/nginx.conf /etc/nginx/conf.d/default.conf
-EXPOSE 80
-CMD [ "nginx", "-g", "daemon off;" ]
+EXPOSE 8080
+CMD ["/bin/bash"]
