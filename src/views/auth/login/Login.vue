@@ -1,17 +1,21 @@
 <template>
 <section class="hero is-fullheight is-clipped">
-  <div class="hero-body p-0">
+  <div
+    class="hero-body p-0">
     <img
       class="login-background"
       src="@/assets/Frame.png"
     >
     <div class="columns full-width is-gapless">
       <div class="column login-column-left has-background-light-gray">
-        <img
-          alt=""
-          class="is-login-logo mt-12 ml-12"
-          src="@/assets/logo.png"
-        >
+        <div style="z-index: 20;">
+          <img
+            alt=""
+            class="is-login-logo mt-12 ml-12"
+            src="@/assets/logo.png"
+            style="z-index: 20;"
+          >
+        </div>
       </div>
       <div class="column login-column-right max-height">
         <div class="columns full-height is-centered">
