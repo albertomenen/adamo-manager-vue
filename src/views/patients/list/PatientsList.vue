@@ -29,6 +29,7 @@
     id="table_patients"
     :data="patients"
     :loading="loadingPatients"
+    :permissions="getUserPermissions"
     @patient:delete="deletePatient"
     @patient:edit="editPatient"
     @patient:show="showPatient"

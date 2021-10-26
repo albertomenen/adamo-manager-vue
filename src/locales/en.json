@@ -40,11 +40,11 @@
   },
 
   "patients": {
-    "num": "Paciente|Pacientes",
+    "num": "Patient|Patients",
     "list": "Patients list",
     "myPatients": "My patients",
     "name": "Patient name",
-    "hasInjury": "The patient has lesions",
+    "hasInjury": "The patient has injury",
     "injuryType": "Injury type",
     "injuryCause": "Cause of injury",
     "new": "Create a new patient",
@@ -139,7 +139,8 @@
     "return": "Return",
     "accept": "Accept",
     "capturingImg": "Capturing images",
-    "send": "Send"
+    "send": "Send",
+    "create": "Crear"
   },
 
   "notification": {
@@ -179,6 +180,7 @@
     "personalData": "Personal data",
     "name": "Name",
     "lastNames": "Last name|Last names",
+    "lastname": "Last name",
     "cc": "C.C",
     "identification": "Identification",
     "age": "Age",
@@ -292,5 +294,10 @@
   "sameOfGroup": "Fill fields with the same group data",
   "generalInfo": "General information",
   "myDateBase": "My database",
-  "stations": "Stations"
+  "stations": "Stations",
+
+  "validation": {
+    "required": "The field {_field_} is required",
+    "email": "Insert a valid email"
+  }
 }

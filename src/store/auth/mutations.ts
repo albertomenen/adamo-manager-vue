@@ -23,7 +23,9 @@ const mutation: MutationTree<AuthStateInterface> = {
   },
 
   REMOVE_SESSION (state) {
+    const locale = localStorage.getItem('appLocale')
     localStorage.clear()
+    localStorage.appLocale = locale
     state.authenticatedUser = null
     state.reToken = null
     state.token = null

@@ -190,6 +190,7 @@
     "personalData": "Datos personales",
     "name": "Nombre",
     "lastNames": "Apellido|Apellidos",
+    "lastname": "Apellido",
     "cc": "C.C",
     "identification": "Identificación",
     "age": "Edad",
@@ -305,5 +306,10 @@
   "myDateBase": "Mi base de datos",
   "instalationDate": "Fecha de instalación",
   "stations": "Estaciones",
-  "resetEmail": "Reestablecer correo"
+  "resetEmail": "Reestablecer correo",
+
+  "validation": {
+    "required": "El campo {_field_} es obligatorio",
+    "email": "Introduzca un email válido"
+  }
 }

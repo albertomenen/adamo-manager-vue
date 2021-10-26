@@ -19,7 +19,9 @@ axiosInstance.interceptors.response.use(
     const { data } = error.response
 
     if (data.message === 'Signature expired. Please log in again.') {
+      const locale = localStorage.getItem('appLocale')
       localStorage.clear()
+      localStorage.appLocale = locale
       router.push({ name: 'login' })
     }
 

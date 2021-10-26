@@ -6,6 +6,7 @@ import AConfirmationModal from 'adamo-components/src/components/modals/confirmat
 import AModalPatientForm from 'adamo-components/src/components/modals/patient-form-modal/AModalPatientForm.vue'
 
 const patientsStore = namespace('patients')
+const authStore = namespace('auth')
 
 @Component({
   components: {
@@ -14,6 +15,8 @@ const patientsStore = namespace('patients')
   }
 })
 export default class PatientsList extends Vue {
+
+  @authStore.Getter getUserPermissions
 
   /**
    * Datos de los pacientes

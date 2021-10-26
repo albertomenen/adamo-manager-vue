@@ -20,7 +20,18 @@ const getters: GetterTree<AuthStateInterface, StateInterface> = {
   },
 
   hasPermission: (state) => (permission: string) => {
-    return state.authenticatedUser!.role![permission] === true
+    return state.authenticatedUser?.role![permission] === true
+  },
+
+  getDashboardRouteName (state) {
+    switch (state.authenticatedUser?.role.role_code) {
+      case 'master': return 'groupsList'
+      default: return 'patientsList'
+    }
+  },
+
+  getUserPermissions (state) {
+    return state.authenticatedUser?.role
   }
 }
 

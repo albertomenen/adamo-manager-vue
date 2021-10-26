@@ -44,6 +44,7 @@ export default class Login extends Vue {
    */
   @auth.Action action_login!: (user: unknown) => Promise<User>
   @auth.Action action_recoverPass!: (email: string) => Promise<void>
+  @auth.Getter getDashboardRouteName!: string
 
   /**
    * Función de login para ser llamada desde el template
@@ -61,7 +62,7 @@ export default class Login extends Vue {
         persistent: this.rememberUser
       })
 
-      this.$router.push({ name: 'groupsList' })
+      this.$router.push({ name: this.getDashboardRouteName })
     }
     catch (error) {
       this.errorMessage = error.response.data.message
