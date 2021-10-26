@@ -117,7 +117,8 @@ export default class TreatmentDetails extends Vue {
       component: AModalThermographicImage,
       props: {
         treatment: this.treatment,
-        currentSession: this.session
+        currentSession: this.session,
+        points: this.treatment?.points
       }
     })
   }

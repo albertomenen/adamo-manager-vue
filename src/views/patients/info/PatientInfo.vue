@@ -37,10 +37,10 @@
           :placeholder="$t('fields.identification')"
           :readonly="!getPatientEditContext" />
         <AInput
-          v-model="patientAge"
           class="column is-2"
           :placeholder="$t('fields.age')"
-          readonly />
+          readonly
+          :value="patientAge" />
         <AInput
           v-model="patient.birthdate"
           class="column is-4"

@@ -5,6 +5,7 @@
       <ATableTreatments
         :admin="true"
         :data="paginatedTreatments"
+        :permissions="getUserPermissions"
         :selected.sync="selectedTreatment"
         @treatment:delete="deleteTreatment"
         @treatment:edit="editTreatment"

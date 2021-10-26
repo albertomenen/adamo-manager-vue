@@ -140,7 +140,8 @@
     "accept": "Accept",
     "capturingImg": "Capturing images",
     "send": "Send",
-    "create": "Crear"
+    "create": "Create",
+    "confirmation": "Are you sure you want to {action} this {resource}?"
   },
 
   "notification": {
@@ -154,6 +155,12 @@
       "calculating": "Calculating",
       "search": "searching"
     }
+  },
+
+  "temperatures": {
+    "low": "Low",
+    "medium": "Medium",
+    "high": "High"
   },
 
   "fields": {
@@ -253,7 +260,7 @@
   },
 
   "languages": {
-    "label": "Idiom",
+    "label": "Language",
     "spanish": "Spanish",
     "english": "English"
   },
@@ -295,6 +302,7 @@
   "generalInfo": "General information",
   "myDateBase": "My database",
   "stations": "Stations",
+  "noInjury": "No injury",
 
   "validation": {
     "required": "The field {_field_} is required",

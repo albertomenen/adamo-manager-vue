@@ -5,6 +5,7 @@ import { namespace } from 'vuex-class'
 import AModalConfirmation from 'adamo-components/src/components/modals/confirmation-modal/AModalConfirmation.vue'
 
 const treatmentsStore = namespace('treatments')
+const authStore = namespace('auth')
 
 
 @Component
@@ -32,6 +33,7 @@ export default class PatientHistory extends Vue {
  * Elimina un tratamiento
  */
   @treatmentsStore.Action action_deleteTreatment!: (data) => Promise<void>
+  @authStore.Getter getUserPermissions
 
   /**
    * Muestra los tratamientos paginados
