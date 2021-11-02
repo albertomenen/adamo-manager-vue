@@ -24,14 +24,14 @@ export default class InfoGroup extends Vue {
   }
 
   get getGroupLogo () {
-    return this.group.logo || require('@/assets/user.png')
+    return `data:image/png;base64,${this.group.logo}` || require('@/assets/user.png')
   }
 
   handleImage (e: any): void {
     const reader = new FileReader()
 
     reader.onload = (e: any) => {
-      this.group.logo = e.target.result
+      this.group.logo = e.target.result.split(',')[1]
     }
     reader.readAsDataURL(e)
   }

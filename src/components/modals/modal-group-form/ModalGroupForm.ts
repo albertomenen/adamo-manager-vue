@@ -42,7 +42,7 @@ export default class ModalGroupForm extends Vue {
   handleSubmit (): void {
     this.$emit('cancel')
     this.$emit('ok', {
-      formGroup: this.formGroup,
+      formGroup: { ...this.formGroup, logo: this.formGroup.logo.split(',')[1] },
       formLocation: this.formLocation
     })
   }
@@ -69,5 +69,6 @@ export default class ModalGroupForm extends Vue {
       this.formLocation.contact_name = ''
       this.formLocation.email = ''
     }
+    this.$forceUpdate()
   }
 }
