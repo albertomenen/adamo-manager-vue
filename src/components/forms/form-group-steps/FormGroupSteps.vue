@@ -27,7 +27,7 @@
     />
   </BStepItem>
   <template #navigation="{previous, next}">
-    <div class="has-text-centered is-navigation">
+    <div class="has-text-centered">
       <BButton
         v-show="activeStep !== 0"
         class="mr-5"

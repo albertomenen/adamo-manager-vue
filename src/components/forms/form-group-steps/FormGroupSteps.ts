@@ -27,7 +27,10 @@ export default class FormGroupSteps extends Vue {
   get isFormValid () {
     if (this.activeStep === 0) return true
 
-    return ![...Object.values(this.formGroup), ...Object.values(this.formLocation)].some(o => !o)
+    const groupData = { ...this.formGroup }
+    delete groupData.logo
+
+    return ![...Object.values(groupData), ...Object.values(this.formLocation)].some(o => !o)
   }
 
   nextStep (handler: () => void): void {
