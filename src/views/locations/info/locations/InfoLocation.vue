@@ -1,7 +1,6 @@
 <template>
 <div>
   <div
-    v-if="!getLocationEditContext"
     class="content-wrapper"
   >
     <div
@@ -23,13 +22,13 @@
           v-model="location.city"
           class="column is-half"
           :placeholder="$t('fields.city')"
-          readonly
+          :readonly="!getLocationEditContext"
         />
         <AInput
           v-model="location.town"
           class="column is-half"
           :placeholder="$t('fields.province')"
-          readonly
+          :readonly="!getLocationEditContext"
         />
         <AInput
           v-model="location.address"
@@ -37,7 +36,7 @@
           icon="map-marker-alt"
           icon-pack="fas"
           :placeholder="$t('fields.address')"
-          readonly
+          :readonly="!getLocationEditContext"
         />
         <AInput
           v-model="location.phone"
@@ -45,7 +44,7 @@
           icon="phone-alt"
           icon-pack="fas"
           :placeholder="$t('fields.phone')"
-          readonly
+          :readonly="!getLocationEditContext"
         />
         <AInput
           v-model="location.email"
@@ -53,7 +52,7 @@
           icon="envelope"
           icon-pack="far"
           :placeholder="$t('fields.email')"
-          readonly
+          :readonly="!getLocationEditContext"
         />
         <AInput
           v-model="location.contact_name"
@@ -61,56 +60,7 @@
           icon="user"
           icon-pack="fas"
           :placeholder="$t('fields.contactPerson')"
-          readonly
-        />
-      </div>
-    </div>
-  </div>
-  <div
-    v-else
-  >
-    <div class="is-adamo-card-dark mt-4">
-      <div class="is-flex is-justify-content-space-between is-align-items-center mb-4">
-        <div class="is-text-h2 has-text-dark-blue py-2">{{ locationEdit.location_name }}</div>
-      </div>
-      <div class="columns is-multiline">
-        <AInput
-          v-model="locationEdit.city"
-          class="column is-half"
-          :placeholder="$t('fields.city')"
-        />
-        <AInput
-          v-model="locationEdit.town"
-          class="column is-half"
-          :placeholder="$t('fields.province')"
-        />
-        <AInput
-          v-model="locationEdit.address"
-          class="column is-half"
-          icon="map-marker-alt"
-          icon-pack="fas"
-          :placeholder="$t('fields.address')"
-        />
-        <AInput
-          v-model="locationEdit.phone"
-          class="column is-half"
-          icon="phone-alt"
-          icon-pack="fas"
-          :placeholder="$t('fields.phone')"
-        />
-        <AInput
-          v-model="locationEdit.email"
-          class="column is-half"
-          icon="envelope"
-          icon-pack="far"
-          :placeholder="$t('fields.email')"
-        />
-        <AInput
-          v-model="locationEdit.contact_name"
-          class="column is-half"
-          icon="user"
-          icon-pack="fas"
-          :placeholder="$t('fields.contactPerson')"
+          :readonly="!getLocationEditContext"
         />
       </div>
     </div>
@@ -118,4 +68,4 @@
 </div>
 </template>
 
-<script src="./InfoLocations.ts" lang="ts"></script>
+<script src="./InfoLocation.ts" lang="ts"></script>

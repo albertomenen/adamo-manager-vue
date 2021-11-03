@@ -166,6 +166,9 @@
   },
 
   "fields": {
+    "placed": "Observaciones",
+    "installationDate": "Fecha de instalación",
+    "version": "Version",
     "phone": "Teléfono",
     "email": "Correo",
     "password": "Contraseña",
@@ -306,6 +309,7 @@
   "myDateBase": "Mi base de datos",
   "instalationDate": "Fecha de instalación",
   "stations": "Estaciones",
+  "newStation": "Nueva estación",
   "resetEmail": "Reestablecer correo",
 
   "validation": {

@@ -39,6 +39,28 @@ const groupRoutes: Array<RouteConfig> = [
             }
           ]
         }
+
+      },
+      {
+        path: ':groupId/location/:locationId',
+        name: 'locationDetails',
+        component: () => import('@/views/locations/details/LocationDetails.vue'),
+        meta: {
+          breadcrumb: [
+            {
+              label: ['groups.num', 2],
+              link: {
+                name: 'groupsList'
+              }
+            },
+            {
+              label: ['groups.num', 1]
+            },
+            {
+              label: ['locations.num', 1]
+            }
+          ]
+        }
       }
     ]
   }

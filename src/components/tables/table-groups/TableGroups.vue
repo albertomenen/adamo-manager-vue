@@ -61,7 +61,7 @@
     </ATableMenu>
   </BTableColumn>
   <template #detail="props">
-    <TableLocations
+    <TableGroupLocations
       v-if="props.row.locations.length"
       :data="props.row.locations"
     />

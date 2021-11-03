@@ -7,9 +7,9 @@ const groupsStore = namespace('groups')
 
 @Component({
   props: {
-    data: {
-      type: Array as () => PropType<Location[]>,
-      default: []
+    location: {
+      type: Object as () => PropType<Location>,
+      default: null
     }
   }
 })

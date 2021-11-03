@@ -1,6 +1,6 @@
 <template>
 <div>
-  <template v-if="group">
+  <template v-if="location">
     <div class="is-flex is-justify-content-space-between">
       <div class="is-flex is-align-items-center">
         <BButton
@@ -10,27 +10,7 @@
           type="is-white"
           @click="$router.go(-1)"
         />
-        <div class="is-text-h2 has-text-title ml-4">{{ group.group_name }}</div>
-      </div>
-      <div
-        v-if="getGroupEditContext"
-        class="has-gap-x-2"
-      >
-        <BButton
-          class="has-text-title has-shadow"
-          :label="$t('actions.cancel')"
-          rounded
-          type="is-white"
-          @click="cancelGroupUpdate"
-        />
-        <BButton
-          class="has-text-white has-shadow"
-          icon-pack="fas"
-          :label="$t('actions.saveChanges')"
-          rounded
-          type="is-orange"
-          @click="updateGroup"
-        />
+        <div class="is-text-h2 has-text-title ml-4">{{ location.location_name }}</div>
       </div>
       <div
         v-if="getLocationEditContext"
@@ -53,16 +33,16 @@
         />
       </div>
       <div
-        v-if="(tab === 1) && !getGroupEditContext && !getLocationEditContext"
+        v-if="(tab === 1) && !getLocationEditContext"
       >
         <BButton
           class="has-text-white has-shadow"
           icon-pack="fas"
           icon-right="plus"
-          :label="$t('locations.new')"
+          :label="$t('newStation')"
           rounded
           type="is-orange"
-          @click="handleNewLocation"
+          @click="handleNewStation"
         />
       </div>
     </div>
@@ -72,28 +52,22 @@
       type="is-adamo-tab mt-4"
     >
       <BTabItem
-        v-if="!getLocationEditContext"
+        v-if="!getStationEditContext"
         icon="hospital-alt"
         icon-pack="fas"
-        :label="$tc('groups.num', 1)"
+        :label="$t('fields.information')"
       >
-        <InfoGroup
-          :data="group"
-        />
+        <InfoLocation :location="location" />
       </BTabItem>
       <BTabItem
-        v-if="!getGroupEditContext"
+        v-if="!getLocationEditContext"
         icon="clinic-medical"
         icon-pack="fas"
-        :label="$tc('locations.num', 2)"
+        :label="$t('stations')"
       >
-        <TableLocations
-          class="mt-4"
-          :data="group.locations"
-          @location:delete="deleteLocation"
-          @location:edit="editLocation"
-          @location:show="showLocation"
-        />
+        <TableStations
+          :data="stations"
+          @station:delete="deleteStation" />
       </BTabItem>
     </BTabs>
   </template>
@@ -104,6 +78,6 @@
 </div>
 </template>
 
-<script src="./GroupDetails.ts" lang="ts"></script>
+<script src="./LocationDetails.ts" lang="ts"></script>
 
-<style src="./GroupDetails.scss" lang="scss"></style>
+<style src="./LocationDetails.scss" lang="scss"></style>

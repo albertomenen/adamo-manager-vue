@@ -10,4 +10,16 @@ export default class TableLocations extends Vue {
     default: () => []
   })
   data!: Location[]
+
+  showLocation (location: Location): void {
+    this.$emit('location:show', location.id_location)
+  }
+
+  editLocation (location: Location): void {
+    this.$emit('location:edit', location.id_location)
+  }
+
+  deleteLocation (location: Location): void {
+    this.$emit('location:delete', location.id_location)
+  }
 }

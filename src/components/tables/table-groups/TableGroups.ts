@@ -4,7 +4,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
 
 @Component({
   components: {
-    TableLocations: () => import('@/components/tables/table-locations/TableLocations.vue')
+    TableGroupLocations: () => import('@/components/tables/table-group-locations/TableGroupLocations.vue')
   }
 })
 export default class TableGroups extends Vue {

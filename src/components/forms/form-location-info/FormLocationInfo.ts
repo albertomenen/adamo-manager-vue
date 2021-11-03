@@ -15,6 +15,6 @@ export default class FormLocationInfo extends Vue {
 
 
   handleCreate (): void {
-    this.$emit('save', this.$props.formData)
+    this.$emit('save', this.formData)
   }
 }

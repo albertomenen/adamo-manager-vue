@@ -10,7 +10,7 @@ const groupsStore = namespace('groups')
 @Component({
   components: {
     InfoGroup: () => import('@/views/groups/info/group/InfoGroup.vue'),
-    InfoLocations: () => import('@/views/groups/info/locations/InfoLocations.vue')
+    TableLocations: () => import('@/components/tables/table-locations/TableLocations.vue')
   }
 })
 export default class GroupDetails extends Vue {
@@ -38,6 +38,8 @@ export default class GroupDetails extends Vue {
   @groupsStore.Action action_updateLocation!: ({ groupId, formLocation }) => Promise<Location>
 
   @groupsStore.Action action_createLocation!: ({ groupId, formLocation }) => Promise<Location>
+
+  @groupsStore.Action action_deleteLocation!: ({ groupId, locationId }) => Promise<Location>
 
   created (): void {
     this.getGroupData()
@@ -134,7 +136,7 @@ export default class GroupDetails extends Vue {
         catch (error) {
           this.$notify.error(this.$t('notification.error', {
             noun: (this.$t('nouns.theM') as string).toLowerCase(),
-            action: (this.$t('actions.delete') as string).toLowerCase(),
+            action: (this.$t('actions.create') as string).toLowerCase(),
             resource: this.$tc('locations.num', 1).toLowerCase()
           }))
         }
@@ -143,6 +145,45 @@ export default class GroupDetails extends Vue {
         }
       }
     })
+  }
+
+  showLocation (locationId: string): void {
+    this.$router.push({
+      name: 'locationDetails',
+      params: {
+        groupId: this.$route.params.groupId,
+        locationId
+      }
+    })
+  }
+
+  editLocation (locationId: string): void {
+    this.showLocation(locationId)
+  }
+
+  async deleteLocation (locationId: string): Promise<void> {
+    this.loadingPage = true
+    try {
+      await this.action_deleteLocation({
+        groupId: this.group?.id_group,
+        locationId
+      })
+      this.$notify.success(this.$t('notification.success', {
+        noun: (this.$t('nouns.theF') as string),
+        action: (this.$t('notification.actions.deleted') as string).toLowerCase(),
+        resource: this.$tc('locations.num', 1).toLowerCase()
+      }))
+      this.getGroupData()
+    }
+    catch {
+      this.$notify.error(this.$t('notification.error', {
+        noun: (this.$t('nouns.theF') as string).toLowerCase(),
+        action: (this.$t('notification.actions.deleted') as string).toLowerCase(),
+        resource: this.$tc('locations.num', 1).toLowerCase()
+      }))
+      this.loadingPage = false
+
+    }
   }
 
   cancelGroupUpdate (): void {

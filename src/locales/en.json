@@ -164,6 +164,9 @@
   },
 
   "fields": {
+    "placed": "Observations",
+    "installationDate": "Installation Date",
+    "version": "Version",
     "phone": "Phone number",
     "email": "E-mail",
     "password": "Password",
@@ -302,6 +305,7 @@
   "generalInfo": "General information",
   "myDateBase": "My database",
   "stations": "Stations",
+  "newStation": "New station",
   "noInjury": "No injury",
 
   "validation": {

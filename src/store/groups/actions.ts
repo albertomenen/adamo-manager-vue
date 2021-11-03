@@ -48,6 +48,16 @@ const actions: ActionTree<GroupsStateInterface, StateInterface> = {
   },
 
   /**
+   * Obtener datos de localización
+   * @param groupId - Id del localización
+   */
+  async action_getLocation (_, { groupId, locationId }): Promise<Group> {
+    const { data } = await axiosInstance.get(`/${ApiRoutes.Group}/${groupId}/location/${locationId}`)
+
+    return data
+  },
+
+  /**
    * Crear nuevo grupo
    * @param formGroup - datos de grupo
    */
@@ -90,11 +100,32 @@ const actions: ActionTree<GroupsStateInterface, StateInterface> = {
   },
 
   /**
+   * Eliminar localización
+   * @param groupId - Id de la localización
+   */
+  async action_deleteLocation (_, { groupId, locationId }): Promise<void> {
+    await axiosInstance.delete(`/${ApiRoutes.Group}/${groupId}/location/${locationId}`)
+  },
+
+  /**
    * Eliminar grupo
    * @param groupId - Id del grupo
    */
   async action_deleteGroup (_, groupId: string): Promise<void> {
     await axiosInstance.delete(`/${ApiRoutes.Group}/${groupId}`)
+  },
+
+  async action_createStation (_, { groupId, locationId, formStation }): Promise<void> {
+    const { data } = await axiosInstance.post(`/${ApiRoutes.Group}/${groupId}/location/${locationId}/station`, {
+      ...formStation,
+      id_location: locationId
+    })
+
+    return data
+  },
+
+  async action_deleteStation (_, { groupId, locationId, stationId }): Promise<void> {
+    await axiosInstance.delete(`/${ApiRoutes.Group}/${groupId}/location/${locationId}/station/${stationId}`)
   }
 }
 
