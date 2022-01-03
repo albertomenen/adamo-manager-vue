@@ -30,6 +30,30 @@
   </BTableColumn>
   <BTableColumn
     v-slot="props"
+    field="id_station"
+    label="ID"
+  >
+    <div class="is-flex is-align-items-center">
+      <BTooltip
+        :label="$t('copy_to_clipboard')"
+        type="is-black">
+        <BButton
+          icon-pack="far"
+          icon-right="copy"
+          outlined
+          style="border-radius: 50%"
+          @click="handleCopyIdToClipboard(props)"
+        />
+      </BTooltip>
+      <span
+        :ref="`id_station-${props.row.id_station}`"
+        class="pl-2">
+        {{ props.row.id_station }}
+      </span>
+    </div>
+  </BTableColumn>
+  <BTableColumn
+    v-slot="props"
     centered
   >
     <ATableMenu>

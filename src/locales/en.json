@@ -306,7 +306,10 @@
   "myDateBase": "My database",
   "stations": "Stations",
   "newStation": "New station",
+  "resetEmail": "Reestablish mail",
   "noInjury": "No injury",
+  "copy_to_clipboard": "Copy to clipboard",
+  "id_was_copied": "The ID {id} has been copied to the clipboard",
 
   "validation": {
     "required": "The field {_field_} is required",

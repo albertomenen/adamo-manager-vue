@@ -14,4 +14,12 @@ export default class TableStations extends Vue {
   deleteStation (station: Station): void {
     this.$emit('station:delete', station.id_station)
   }
+
+  handleCopyIdToClipboard ({ row }) {
+    const el: HTMLElement = this.$refs[`id_station-${row.id_station}`] as HTMLElement
+
+    navigator.clipboard.writeText(el.innerHTML)
+
+    this.$notify.success(this.$t('id_was_copied', { id: row.id_station }))
+  }
 }

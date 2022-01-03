@@ -311,6 +311,9 @@
   "stations": "Estaciones",
   "newStation": "Nueva estación",
   "resetEmail": "Reestablecer correo",
+  "noInjury": "Sin lesión",
+  "copy_to_clipboard": "Copiar a portapapeles",
+  "id_was_copied": "El ID {id} ha sido copiado al portapapeles",
 
   "validation": {
     "required": "El campo {_field_} es obligatorio",
