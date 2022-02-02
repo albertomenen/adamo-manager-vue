@@ -12,8 +12,7 @@ const actions: ActionTree<PatientsStateInterface, StateInterface> = {
    * @param params - Parámetros de paginación
    */
   async action_getPatients ({ rootGetters }, params: ApiRequest): Promise<ApiListResponse<Patient>> {
-    const groupId = rootGetters['auth/getUserGroupId']
-    const { data } = await axiosInstance.get(`/${ApiRoutes.Group}/${groupId}/${ApiRoutes.Patients}`, { params })
+    const { data } = await axiosInstance.get(`/${ApiRoutes.Patients}`, { params })
 
     return data
   },
