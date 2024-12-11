@@ -1,12 +1,13 @@
-FROM node:16-alpine as build
+FROM node:16-alpine as build  
 
 WORKDIR /usr/app
 USER 0
-COPY package*.json ./
 
-RUN apk update
-RUN apk add git
-RUN apk add openssh
+# Copiar package.json y el archivo tarball
+COPY package*.json ./
+COPY adamo-components-v0.0.1.tgz ./adamo-components-v0.0.1.tgz
+
+RUN apk update && apk add git openssh
 
 # Authorize SSH Host
 RUN mkdir -p /root/.ssh && \
@@ -19,12 +20,16 @@ COPY ["components_keys/*", "/root/.ssh/"]
 RUN chmod 600 /root/.ssh/id_rsa && \
     chmod 600 /root/.ssh/id_rsa.pub
 
-RUN  echo "    IdentityFile ~/.ssh/id_rsa" >> /etc/ssh/ssh_config
+RUN echo "    IdentityFile ~/.ssh/id_rsa" >> /etc/ssh/ssh_config
 
-RUN yarn install -g --network-timeout 1000000
+
+
+# Instalar dependencias
+RUN yarn config set ignore-engines true
+RUN yarn install --no-cache --network-timeout 1000000
 
 COPY . .
-RUN yarn build
+RUN yarn build 
 
 FROM nginx:stable-alpine
 COPY --from=build /usr/app/dist /bin/www
